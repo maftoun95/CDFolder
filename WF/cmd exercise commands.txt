@@ -1,0 +1,10 @@
+windows key--->cmd
+cd desktop
+mkdir test
+copy NUL "______"
+cd..
+move index.html ..\destination
+del index_2.html
+dir
+del destination
+rmdir destination

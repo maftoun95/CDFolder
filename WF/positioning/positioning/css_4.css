@@ -1,0 +1,47 @@
+#container{
+  background-color: yellow;
+/*  display: inline-block;*/
+  width: 600px;
+  margin: 0 auto;
+}
+#box-1, #box-2, #box-3{
+  height: 100px;
+  width: 100px;
+  margin: 10px;
+  display: inline-block;
+}
+#box-1{
+  background-color: green;
+/*  position: absolute;*/
+  top:40px;
+}
+#box-2{
+  background-color: pink;
+/*  position: relative;*/
+  top: 20px;
+  left: 20px;
+}
+#box-3{
+  background-color: blue;
+}
+
+/*demo 2 styles*/
+
+#container2{
+  width:200px;
+  height:200px;
+  background: blue;
+  position:relative;
+  display: inline-block;
+}
+#center-me{
+  background: red;
+  height: 100px;
+  width: 100px; 
+  margin: auto;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  right: 0;
+}

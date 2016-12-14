@@ -1,0 +1,11 @@
+windows----> cmd
+cd desktop
+md test
+cd test
+copy NUL index.html
+git init
+git add .
+git status
+git commit -m "message"
+git log
+git revert -n <commit hash> -m "message"
