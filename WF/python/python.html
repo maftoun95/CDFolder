@@ -1,36 +1,30 @@
  <!DOCTYPE html>
  <html lang="en">
-	 <head>
-	 	<title>Python</title>
-	 	<link rel="stylesheet" type="text/css" href="python.css">
-	 </head>
-
-
-
-
-
-
-
-
-
-
-
-
-
+	<head>
+		<title>Python</title>
+		<link rel="stylesheet" type="text/css" href="python.css">
+	</head>
 
 	 <body>
 <!-- 	 	wrap it all up! -->
 	 	<div id="wrapper">
 <!-- 	 		our master header div -->
 	 		<div id="header">
+	 			<div id="size">Text size: Normal | Large</div>
 <!-- 	 			upper div segment containing img and search box divs -->
 	 			<div id ="head1">
-	 				<div id="img">
-	 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in sem ligula. Suspendisse et metus ut ex euismod porttitor. Quisque tempor aliquet mi, nec aliquam mag
-	 				</div>
-	 				<div class="blank"></div>
-	 				<div id="search">
-	 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in sem ligula. Suspendisse et metus ut ex euismod porttitor. Quisque tempor aliquet mi, nec aliquam mag
+	 				<!-- <div id="img"> -->
+	 					<img id="pic" src="python.png">
+	 				<!-- </div> -->
+	 				<div id="searchdiv">
+	 					<!-- <div id="searchbox"> -->
+	 						<form>
+	 							<label>
+					    			<input type="text" name="Search">
+					               </label>
+					               <input type="submit" value="GO">
+	 						</form>
+	 					<!-- </div> -->
 	 				</div>
 	 			</div>
 <!-- 	 			lower header div with the nav bar -->
@@ -53,13 +47,13 @@
 	 			<div id="main1">
 	 				<div id="links">
 	 					<ul>
-	 						<li class="nbar2"><a href="#">Docs</a></li>
-	 						<li class="nbar2"><a href="#">Audio/Visual Talks</a></li>
-	 						<li class="nbar2"><a href="#">Begginer's Guide</a></li>
-	 						<li class="nbar2"><a href="#">Developers Guide</a></li>
-	 						<li class="nbar2"><a href="#">PEP Index</a></li>
-	 						<li class="nbar2"><a href="#">Python Books</a></li>
-	 						<li class="nbar2"><a href="#">FAQ</a></li>
+	 						<li class="nbar2">&raquo;<a href="#">Docs</a></li>
+	 						<li class="nbar2">&raquo;<a href="#">Audio/Visual Talks</a></li>
+	 						<li class="nbar2">&raquo;<a href="#">Begginer's Guide</a></li>
+	 						<li class="nbar2">&raquo;<a href="#">Developers Guide</a></li>
+	 						<li class="nbar2">&raquo;<a href="#">PEP Index</a></li>
+	 						<li class="nbar2">&raquo;<a href="#">Python Books</a></li>
+	 						<li class="nbar2">&raquo;<a href="#">FAQ</a></li>
 	 					</ul>
 	 				</div>
 	 				<div id="content">
@@ -73,6 +67,7 @@
 	 						<li class="yellow">Complex is better than complicated;</li>
 	 						<li class="yellow">Readability counts;</li>
 	 					</ul>
+	 					<p>The Zen of Python</p>
 	 				</div>
 	 			</div>
 <!-- 	 			lower main div. contains two inline blocks that are styled the same -->
@@ -105,6 +100,7 @@
 	 				<li><a href="#">Diversity Initiatives</a></li>
 	 				<li><a href="#">Submit Website Bugs</a></li>
 	 			</ul>
+	 			<p>Copyright &copy;2001-2016</p>
 	 		</div>
 	 	</div>
 	 </body>
