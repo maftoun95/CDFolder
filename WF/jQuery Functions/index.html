@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="script.js" async></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>jQuery Functions</title>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <div class="functionWrapper">
+        <div class="functionExample">
+          <h1>.click</h1>
+          <p>
+            Click the button to witness the power of .click!
+          </p>
+          <button id="click">.click me!</button>
+        </div>
+      </div>
+      <div class="functionWrapper">
+        <div class="functionExample" id="makeHidden">
+          <h1>.hide</h1>
+          <p>
+            Click the button to make this div disappear - click the "show" button below to make it reappear!
+          </p>
+          <button id="hide">Hide me!</button>
+        </div>
+      </div>
+      <div class="functionWrapper">
+        <div class="functionExample">
+          <h1>.show</h1>
+          <p>
+            Click the button to bring back the hidden div above!
+          </p>
+          <button id="show">Show the hidden div!</button>
+        </div>
+      </div>
+      <div class="functionWrapper">
+        <div class="functionExample" id="toggledDiv">
+          <h1>.toggle</h1>
+          <p id="toggledText">
+            Click the button to see the toggle animation hide this text.
+          </p>
+          <p>
+            Toggle works similarly to .hide, with a few differences -
+            it's animated, it accepts animation parameters, and you can use the same function to both hide and show an element.
+          </p>
+          <button id="toggle">Toggle it!</button>
+        </div>
+      </div>
+      <div class="functionWrapper">
+        <div class="functionExample">
+          <h1>.slideDown & .slideUp</h1>
+          <p>
+            Click the button to read about the .slideDown jQuery function.
+          </p>
+          <p id="slideDownText">
+            .slideDown reveals matching hidden elements by sliding down. Accepts a wide variety of arguments! Click the Slide Up button to see the .slideUp function hide the revealed text by sliding upwards.
+          </p>
+          <button id="slideDown">Slide down!</button>
+          <button id="slideUp">Slide up!</button>
+        </div>
+      </div>
+      <div class="functionWrapper">
+        <div class="functionExample">
+          <h1>.slideToggle</h1>
+          <p id="slideToggleText">
+            .slideToggle works just like .toggle, only it's animated! Click the button to make this text disappear or return and watch the animation in action.
+          </p>
+          <button id="slideToggle">slideToggle the text above!</button>
+        </div>
+      </div>
+      <div class="functionWrapper">
+        <div class="functionExample">
+          <h1>.fadeIn <span id="fadeInText">& .fadeOut</span></h1>
+          <p>
+            Fade some text in by clicking the button below!
+          </p>
+          <p id="fadeInText">
+            .fadeIn fades in a hidden element with an animated fade effect! Click the Fade it out! button to watch how .fadeOut works!
+          </p>
+          <button id="fadeIn">Fade it in!</button>
+          <button id="fadeOutButton">Fade it out!</button>
+        </div>
+      </div>
+      <div class="functionWrapper">
+        <div class="functionExample">
+          <h1>.addClass</h1>
+          <p>
+            .addClass adds a class to a specified element type or ID. Click the button to see this in action!
+          </p>
+          <button id="addClass">Add some class!</button>
+          <div id="removeClassDiv">
+            <p>
+              Oh wow. Everything is red! That's because we added the class "red" to every div element on the page! Let's fix that using .removeClass!
+            </p>
+            <button id="removeClass">Remove the new class!</button>
+          </div>
+        </div>
+      </div>
+      <div class="functionWrapper">
+        <div class="functionExample">
+          <h1 id="beforeHeader">.before</h1>
+          <p id="beforeText">
+            .before inserts specified content before each element in a set of matched elements. Click the button to watch it in action!
+          </p>
+          <button id="before">See .before in action!</button>
+        </div>
+      </div>
+      <div class="functionWrapper">
+        <div class="functionExample">
+          <h1 id="afterHeader">.after</h1>
+          <p>
+            .after inserts an element after the designated element. Go figure!
+          </p>
+          <button id="after">See .after in action!</button>
+        </div>
+      </div>
+      <div class="functionWrapper">
+        <div class="functionExample">
+          <h1>.append</h1>
+          <p>
+            .append adds content to the end of each element in the set of matching elements.
+          </p>
+          <ul id="groceryList">
+            <li>
+              Milk
+            </li>
+            <li>
+              Cereal
+            </li>
+          </ul>
+          <button id="append">Append an item to the grocery list!</button>
+        </div>
+      </div>
+      <div class="functionWrapper">
+        <div class="functionExample" id="sampleDiv">
+          <h1>.html</h1>
+          <p>
+            .html is used to get the contents of any element. Click the button to see the contents of this div!
+          </p>
+          <button id="htmlButton">Click to get the HTML of this div!</button>
+        </div>
+      </div>
+      <div class="functionWrapper" id="targetDiv">
+        <div class="functionExample">
+          <h1>.attr</h1>
+          <p>
+            .attr is used to get or set the value of an attribute from the matching element. Let's use it now to change the background and text color of this element!
+          </p>
+          <button id="attrButton">Change background to blue.</button>
+        </div>
+      </div>
+      <div class="functionWrapper">
+        <div class="functionExample">
+          <h1>.val</h1>
+          <p>
+            .val is used to retrieve the value of an element. Enter some text into the box and click the button to watch us retrieve and present what you wrote!</p>
+            <p>
+              <input type="text" id="valInput"/><button id="valButton">Show me!</button>
+            </p>
+        </div>
+      </div>
+      <div class="functionWrapper">
+        <div class="functionExample">
+          <h1>.text</h1>
+          <p>
+            .text is used to retrieve the contents of a selected element, descendants and all. Click below to see this work!
+          </p>
+          <ul id="BIGPAPA">
+            <li>
+              A thing
+            </li>
+            <li>
+              Another thing
+            </li>
+            <li>
+              Thing 3
+            </li>
+          </ul>
+          <button id="BIGPAPABUTTON">Click to see what .text returns when operating on the list above!</button>
+        </div>
+      </div>
+      <div class="functionWrapper">
+        <div class="functionExample" id="dataDiv">
+          <h1>.data</h1>
+          <p>
+            .data stores data on an HTML element as attributes. Click on the button below to see who wrote this page. My name isn't stored anywhere on this page other than in jQuery's cache!
+          </p>
+          <button id="dataButton">Data</button>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

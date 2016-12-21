@@ -1,0 +1,67 @@
+html*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: white;
+}
+
+#wrapper {
+  width: 100%;
+}
+
+.functionWrapper {
+  width: 100%;
+  margin: 0 auto;
+  height: 200px;
+  /*overflow: auto;*/
+}
+
+.functionExample {
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  border-bottom: 1px solid grey;
+}
+
+.hiddenText {
+  display: none;
+}
+
+#slideDownText {
+  display: none;
+}
+
+#slideUpText {
+  display: none;
+}
+
+#fadeInText {
+  display: none;
+}
+
+#fadeOutText {
+  display: none;
+}
+
+#fadeOutButton {
+  display: none;
+}
+
+.red {
+  color: red;
+}
+
+#removeClassDiv {
+  display: none;
+}
+
+#beforeList {
+  overflow: hidden;
+}
+
+.attrExample {
+  background-color: blue;
+  color: white;
+}

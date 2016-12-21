@@ -1,0 +1,21 @@
+img {
+	max-width: 350px;
+	max-height: 350px;
+	display: inline-block;
+}
+div {
+	display: inline-block;
+}
+button {
+	display: block;
+	height: 50px;
+	width: 200px;
+	margin: 0 auto;
+}
+.spot {
+	width: 351px;
+}
+
+#wrapper {
+	width: 100%;
+}
