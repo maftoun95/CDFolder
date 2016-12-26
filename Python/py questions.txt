@@ -1,0 +1,11 @@
+How does the .py file know where to find the import file?? As 
+in import random
+
+when can i usr the r'str' raw string designation? any time i would 
+use a string?
+
+'''
+search up docs on: 
+	.read(), .split(), open(), .close(), import requests, 00
+'''
+

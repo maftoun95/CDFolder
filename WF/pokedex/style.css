@@ -1,0 +1,30 @@
+* {
+	/*padding: 0;
+	width: 0;
+	outline: lime solid 1px;*/
+}
+
+div {
+	display: inline-block;;
+}
+
+#main {
+	width: 70%;
+	display: inline-block;
+}
+
+#pokedex {
+	width: 25%;
+	display: inline-block;
+	padding: 10px 10px;
+	vertical-align: top;
+	border: green solid 1px;
+}
+
+#stats div {
+	display: block;
+}
+
+.stdiv {
+	display: block;
+}
