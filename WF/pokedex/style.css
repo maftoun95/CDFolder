@@ -1,11 +1,14 @@
-* {
-	/*padding: 0;
-	width: 0;
-	outline: lime solid 1px;*/
+div {
+	display: inline-block;
 }
 
-div {
-	display: inline-block;;
+body{
+	background: linear-gradient( 45deg, blue, yellow 50%, red );
+}
+
+#stash {
+	height: 130px;
+	width: 130px;
 }
 
 #main {
@@ -14,11 +17,15 @@ div {
 }
 
 #pokedex {
+	position: fixed;
+	top: 30%;
 	width: 25%;
 	display: inline-block;
 	padding: 10px 10px;
 	vertical-align: top;
-	border: green solid 1px;
+	border: ridge 5px;
+	border-color: DarkMagenta;
+	border-radius: 25px;
 }
 
 #stats div {

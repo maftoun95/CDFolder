@@ -13,6 +13,7 @@ function whoDat(arr) {
 	}
 }
 
+whoDat(students);
 
 
 //Part II

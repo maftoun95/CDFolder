@@ -1,0 +1,13 @@
+img {
+	margin: 7px;
+}
+
+body {
+	background: linear-gradient( 45deg, blue, yellow 50%, red );
+}
+
+div {
+	display: inline-block;
+	height: 120px;
+	width: 120px;
+}

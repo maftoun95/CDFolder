@@ -28,7 +28,7 @@ $(function() {
 	});
 
 	for(var i =1; i < 152; i++){
-		var pokepic = `<img id="${i}" src="http://pokeapi.co/media/img/${i}.png">`
+		var pokepic = `<div id="stash"><img id="${i}" src="http://pokeapi.co/media/img/${i}.png"></div>`
 		$('#main').append(pokepic);
 	}
 })

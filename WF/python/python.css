@@ -1,9 +1,6 @@
-* {
 
-}
 
 div {
-	outline: yellow dotted thin;
 	display: inline-block;
 }
 
@@ -18,9 +15,19 @@ a {
 }
 
 #header {
+	padding-top: 5px;
+	padding-right: 5px;
 	width: 100%;
 	height: auto;
 	text-align: right;
+}
+
+#light_font {
+	color: #E1E7EC;
+}
+
+#yaller {
+	color: yellow;
 }
 
 #head1 {
@@ -36,7 +43,7 @@ a {
 
 #size {
 	text-align: right;
-/*	margin-left: 712px;*/
+	margin-right: 5px;
 }
 
 #nav {
@@ -59,9 +66,7 @@ a {
 	max-height:100%;
 	width: 32%;
 	margin-right: 150px;
-
 }
-
 
 #searchdiv {
 	width: 300px;
@@ -71,14 +76,14 @@ a {
 	padding-top: 20px;
 	background-color: #444;
 	border-radius: 10px;
-
-/*	outline: tomato dotted ;*/
+	box-shadow: 0px 2px 2px black;
 }
 
-/*#searchbox {
-	text-align: center;
-	margin-left: 200px;
-}*/
+#gogo {
+	background-color: #245076;
+    border-radius: 5px;
+    color: white;
+}
 
 #main {
 	width: auto;
@@ -149,6 +154,7 @@ a {
 
 #footer ul li{
 		display: inline;
+		margin-right: 20px;
 }
 
 #footer {
@@ -159,6 +165,11 @@ a {
 }
 
 #footer ul li a {
+	font-size: 16pt;
 	text-decoration: none;
+	color: #7DAFDD;
+}
+
+#footer p {
 	color: #7DAFDD;
 }
