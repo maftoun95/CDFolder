@@ -1,0 +1,65 @@
+/** {
+	margin: 0;
+	padding: 0;
+}*/
+body {
+	background-color: black;
+	margin: 0;
+}
+
+div.row {
+/*	margin: 0;
+	padding: 0;*/
+	height: 25px;
+}
+
+div#score {
+	border: 2px dotted lime;
+	width: 70px;
+	height: 25px;
+	color: lightblue;
+	text-align: center;
+	padding: 7px;
+	position: absolute;
+	top: 50px;
+	left: 750px;
+	vertical-align: middle;
+}
+
+div.row div {
+	width: 25px;
+	height: 25px;
+	display: inline-block;
+/*	margin: 0;
+	padding: 0;*/
+}
+
+div.brick {
+	background-color: darkred;
+/*	outline: .5px solid lime;*/
+}
+
+div.coin {
+	background: url('ring.gif');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+div.empty {
+
+}
+
+div#pacman {
+	background: url('pac1.gif');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+}
+
+div#world {
+	display: inline-block;
+}
