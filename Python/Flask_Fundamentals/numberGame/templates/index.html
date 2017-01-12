@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Great Number Game</title>
+</head>
+<body>
+	<h1>Welcome to the great number game!</h1>
+	<p>I am thinking of a number between 1 and 100</p>
+	<p>Take a guess:</p>
+	<form action="/guess" method="POST">
+		<input type="text" name='num'>
+		<input type="submit" value="send">
+	</form>
+	{% if session['guess'] == session['randomNumber'] %}
+		<div>
+			<form action="/clear"><input type="submit" value="clear"></form>
+		</div>
+	{% endif %}
+	<p>
+		{{session['gameGuess']}}
+	</p>
+</body>
+</html>
