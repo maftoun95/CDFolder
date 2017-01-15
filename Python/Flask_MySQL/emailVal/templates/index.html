@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Email Validator</title>
+</head>
+<body>
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+			<p>{{message}}</p>
+			{% endfor %}
+		{% endif%}
+	{% endwith %}
+	<p>
+		<form action="/emval" method="POST">
+			Email: <input type="text" name="email">
+			<input type="submit">
+		</form>
+	</p>
+	<ul>
+		{% for addy in emails %}
+			<li>{{addy['email']}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  date added: {{addy['created_at']}}</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>

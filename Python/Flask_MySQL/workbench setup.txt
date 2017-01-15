@@ -1,0 +1,5 @@
+run MAMP
+Find and write down which ports are being used
+run MySQL workbench
+add new instance and make sure its using the same ports
+enter password

@@ -21,7 +21,6 @@ def guess():
 	elif int(request.form['num']) > int(session['randomNumber']):
 		session['gameGuess'] = 'Nope, your guess of '+ request.form['num'] +' was too big...'
 	print request.form['num'], session['randomNumber']
-	print session
 	return redirect('/')
 
 @app.route('/clear')

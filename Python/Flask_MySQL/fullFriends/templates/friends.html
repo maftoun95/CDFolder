@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Update Friends</title>
+</head>
+<body>
+	<p>Edit your friend {{friend[0]['first_name']}}&nbsp;&nbsp;{{friend[0]['last_name']}}<br><br><br>
+		Select which atribute to change:
+		<form action="/friends/{{id}}" method="POST">
+			<select name="modifier">
+				<option value="first_name">First Name</option>
+				<option value="last_name">Last Name</option>
+				<option value="email">Email</option>
+
+			<!-- First Name: <input type="text" name="first">
+			Last Name: <input type="text" name="last">
+			Email: <input type="text" name="email"> -->
+		</select><br><br><br>
+		Replace with:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="value">
+		<input type="submit" value="update">
+		</form>
+	</p>
+</body>
+</html>

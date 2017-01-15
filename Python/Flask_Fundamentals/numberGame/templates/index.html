@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Great Number Game</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 	<h1>Welcome to the great number game!</h1>
@@ -11,13 +12,15 @@
 		<input type="text" name='num'>
 		<input type="submit" value="send">
 	</form>
-	{% if session['guess'] == session['randomNumber'] %}
-		<div>
-			<form action="/clear"><input type="submit" value="clear"></form>
-		</div>
+	{% if session['guess'] %}
+		{% if session['guess'] != session['randomNumber']%}
+			<div class="red">{{session['gameGuess']}}</div>
+		{% endif %}
+		{% if session['guess'] == session['randomNumber'] %}
+			<div class="green">
+				<form action="/clear"><input type="submit" value="clear"><p>{{session['gameGuess']}}</p></<form action=""></form>
+			</div>
+		{% endif %}
 	{% endif %}
-	<p>
-		{{session['gameGuess']}}
-	</p>
 </body>
 </html>

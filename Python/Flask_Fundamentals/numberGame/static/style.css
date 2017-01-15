@@ -1,0 +1,21 @@
+.green{
+	background-color: lime;
+	height: 300px;
+	width: 300px;
+}
+
+.green p {
+	vertical-align: middle;
+	padding: auto;
+}
+
+.red{
+	background-color: HotPink;
+	height: 300px;
+	width: 300px;
+}
+
+.red p {
+	vertical-align: middle;
+	padding: auto;
+}
