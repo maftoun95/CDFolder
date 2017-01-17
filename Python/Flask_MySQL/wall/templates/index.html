@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Wall Login</title>
+</head>
+<body>
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+			<p style="color:hotpink;">{{message}}</p>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+	<h1>Login:</h1>
+	<form action="/login" method="POST">
+		<input type="text" name="email">
+		<input type="password" name="password">
+		<input type="submit" value="Login">
+	</form>
+	<h1>Register:</h1>
+	<form action="/reghandler" method="POST">
+		First Name: <input type="text" name="first_name">
+		Last Name: <input type="text" name="last_name">
+		Email: <input type="text" name="email">
+		Password: <input type="password" name="password">
+		Confirm Password: <input type="password" name="confirm">
+		<input type="submit" value="Register">
+	</form>
+</body>
+</html>

@@ -17,11 +17,11 @@ def index():
 
 @app.route('/friends', methods=["POST"])
 def create():
-	# if not EMAIL_REGEX.match(request.form['email']) or NAME_REGEX.match(request.form['first']) or NAME_REGEX.match(request.form['last']):
-	# 	errmsg = "Please make sure to provide a valid email and to propperly capitalize both names"
-	# 	flash(errmsg)
-	# 	return redirect('/')
-	# elif EMAIL_REGEX.match(request.form['email']) and NAME_REGEX.match(request.form['first']) and NAME_REGEX.match(request.form['last']):
+	if not EMAIL_REGEX.match(request.form['email']) or not NAME_REGEX.match(request.form['first']) or not NAME_REGEX.match(request.form['last']):
+		errmsg = "Please make sure to provide a valid email and to propperly capitalize both names"
+		flash(errmsg)
+		return redirect('/')
+	else:
 		query = "INSERT INTO friends (first_name, last_name, email, time_stamp) VALUES (:first_name, :last_name, :email, NOW())"
 		data = {
 			'first_name' : request.form['first'],
