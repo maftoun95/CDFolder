@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>POOF.... gone</title>
+	<style type="text/css">
+		form {
+			display: inline-block;
+			padding: 7px;
+		}
+	</style>
+</head>
+<body>
+	<!-- Even though it wasn't part of the prompt, I chose to make buttons to hit the routes. All routes can still be typed into the url line and it will work fine. -->
+	<h1>No ninjas here.</h1>
+	<form action="/ninjas/blue" method="POST">
+	{% csrf_token %}
+		<input type="submit" value="Leonardo" name="leo">
+	</form>
+	<form action="/ninjas/orange" method="POST">
+	{% csrf_token %}
+		<input type="submit" value="Michelangelo" name="mike">
+	</form>
+	<form action="/ninjas/red" method="POST">
+	{% csrf_token %}
+		<input type="submit" value="Raphael" name="raph">
+	</form>
+	<form action="/ninjas/purple" method="POST">
+	{% csrf_token %}
+		<input type="submit" value="Donatello" name="don">
+	</form>
+</body>
+</html>

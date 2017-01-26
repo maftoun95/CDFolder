@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Results Page</title>
+</head>
+<body>
+<div></div>
+<div>
+	<h1>Submitted Information</h1>
+	<h3>
+		Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{request.session.name}}<br>
+		Dojo Location:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{request.session.loc}}<br>
+		Favorite Language:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{request.session.lang}}<br>
+		Comment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{request.session.comment}}<br>
+	</h3>
+	<form action="/"><input type="submit" value="Go Back"></form>
+</div>
+</body>
+</html>

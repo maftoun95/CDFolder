@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Survey Form</title>
+</head>
+<body>
+<form action="/proccess" style="color:darkred; display:block; padding: 25px;" method="POST">
+	{% csrf_token %}
+	Your Name: <input type="text" name="name" style=" margin-left: 57px; margin-bottom: 10px;"><br>
+	Dojo Location: <select style=" margin-left: 38px; margin-bottom: 10px;" name="location">
+  		<option value="seattle">Seattle</option>
+  		<option value="san_jose">San Jose</option>
+  		<option value="detroit">Detroit</option>
+  		<option value="moon">The Moon</option>
+	</select><br>
+	Favorite Language: <select style=" margin-left: 10px; margin-bottom: 10px;" name="lang">
+  		<option value="python">Python</option>
+  		<option value="c">C#</option>
+  		<option value="javascript">Javascript</option>
+  		<option value="swift">Swift</option>
+	</select><br><br>
+	Comment (optional): <textarea name="comment" cols="35" rows="7" style="margin-bottom: 10px;"></textarea><br>
+	<input type="submit" value="Submit form" style="margin-top: 25px;">
+</form>
+</body>
+</html>

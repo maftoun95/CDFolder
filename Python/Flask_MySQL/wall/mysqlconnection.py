@@ -31,6 +31,8 @@ class MySQLConnection(object):
             # commit changes
             self.db.session.commit()
             # row that was inserted
+
+                                    #look into .lastrowid
             return result.lastrowid
         else:
             # if the query was an update or delete, return nothing and commit changes

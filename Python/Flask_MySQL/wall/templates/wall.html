@@ -6,23 +6,34 @@
 <body>
 	<div class="header">
 		<h1>Coding Dojo Wall</h1>
-		<h3>Welcome FIRSTNAME</h3>
-		<a href="#">Log Out NO ROUTE YET</a>
+		<h3>Welcome {{session['user_id']}}</h3>
+		<a href="/logout">Log Out NO ROUTE YET</a>
 	</div>
 	<div class="message">
 		<div class="post">
 			<form action="/post" method="POST">
-				Write a new message:
-				<input class="textfield" type="textarea" name="message">
-				<input type="submit" value="Submit">
+				Write a new message:<br>
+				<textarea class="textfield" rows="5" cols="55" name="message"></textarea>
+				<input type="submit" value="Submit Message">
 			</form>
 		</div>
 	</div>
 	<div class="messages">
 		{% for message in messages %}
 			<div class="messagePost">
-				{{message['first_name']}} {{message['last_name']}}<br>
-				{{message['content']}}
+				{{message['created_at']}},  {{message['first_name']}} : {{message['content']}}
+			{% for comment in comments %}
+			<ul>
+				{% if message.id == comment.message_id %}
+					<li>{{ comment['first_name'] }} says: {{ comment['comment'] }}</li>
+				{% endif %}
+			</ul>
+			{% endfor %}
+				<form action="/comment/{{ message['id'] }}" method="post">
+					<textarea class="textfield" rows="3" cols="33" name="comment"></textarea>
+					<input type="submit" value="Submit Comment">
+				</form>
+				<hr>
 			</div>
 		{% endfor %}
 	</div>

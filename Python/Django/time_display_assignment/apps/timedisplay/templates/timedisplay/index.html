@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Clock</title>
+</head>
+<body>
+<h1>
+The Current time:<br>
+{{time}}
+{{request.session.name}}
+<br>
+ {{request.session.name}}
+<form action="/new_user" method="POST">
+	{% csrf_token %}
+	<input type="text" name="first_name">
+	<input type="submit" value="is this thing working????">
+</form>
+</h1>
+</body>
+</html>

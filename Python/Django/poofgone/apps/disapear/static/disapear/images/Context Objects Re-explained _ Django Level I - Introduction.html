@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://learn.codingdojo.com/m/7/3832/26215 -->
+<html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="http://learn.codingdojo.com/assets/black_ninja-db2fe4f1051012ab89c235cc9bf3cd5a.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+    <title>Context Objects Re-explained | Django Level I - Introduction</title>
+    
+    <link href="./Context Objects Re-explained _ Django Level I - Introduction_files/chapter_modules_layout-4b345c32bb5b5150c8bfe2e6aa1312dc.css" media="all" rel="stylesheet">
+    
+    <script src="./Context Objects Re-explained _ Django Level I - Introduction_files/socket.io.js.download" type="text/javascript"></script>
+    <script src="./Context Objects Re-explained _ Django Level I - Introduction_files/chapter_modules_scripts-6fc5e7fe8a60f55dd6677a2d3275b8d3.js.download"></script><style></style>
+    <meta content="authenticity_token" name="csrf-param">
+<meta content="VsUXb9kLrXQ8Ij8+g5AHzc+zymST5snmXuuLDcdWE+A=" name="csrf-token">
+    <script>
+//<![CDATA[
+var AUTH_TOKEN = 'VsUXb9kLrXQ8Ij8+g5AHzc+zymST5snmXuuLDcdWE+A=';
+//]]>
+</script>
+   
+
+    <script type="text/javascript">
+        var io = io.connect('https://learn.codingdojo.com:8787', {force_connection: true ,path: "/app1socket"});
+        var pair_hangout = false;
+        var admin_as_student = "";
+
+        io.on("error", function(){
+            console.log('Failed connecting to node js server.');
+        });
+    
+        if(admin_as_student != "true"){
+            io.on('server:logout', function(){
+                io.emit("student:signout");
+
+                $.ajax({
+                    url: "/before_signout/",
+                    type: "get",
+                    success: function(values) {
+                        if(values.status){
+                            window.location.href = "/signout";  
+                        }
+                    }
+                });
+            });
+        }
+
+        $(document).on('ready page:load', function (){
+            io.on('need_signin', function(socket_data) {
+            	io.emit('student:signin', {user_information: {"id":14527,"first_name":"Saman","last_name":"Maftoun","email":"maftoun95@gmail.com","image_url":null,"created_at":"2016-11-14T20:37:37.000Z","user_level":1,"applicant_id":22400,"is_automated":null,"address":null,"bootcamp_type":3,"bootcamp_date":"December 12, 2016","bootcamp_location":"1","updated_at":"2017-01-22T00:25:21.227Z","last_visited_url":"/m/7/3832/26215","group_ids":[106]}, ip_address: $("#page_info input:nth-child(6)").val(), device: navigator.userAgent}, function(data){
+            		new_track();
+            	});
+            });
+
+            if(admin_as_student != "true"){
+                io.on('server:warning_duplicate_user', function(data){
+                    console.log("warning!!");
+                    io.emit("track:logout_duplicate", data);
+                });
+            }
+
+            function new_track(){
+            	io.emit('track:new', {
+    	        	url: $("#page_info input:nth-child(1)").val(), 
+    	        	track_id: $("#page_info input:nth-child(2)").val(),
+    	        	course_id: $("#page_info input:nth-child(3)").val(),
+    	        	chapter_id: $("#page_info input:nth-child(4)").val(),
+    	        	module_id: $("#page_info input:nth-child(5)").val(),
+    	        	ip_address: $("#page_info input:nth-child(6)").val()  
+    	        });
+            }
+
+            new_track();
+
+            $("#logout_button").click(function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                io.emit("student:signout");
+                window.location.href = "/signout";
+            });
+
+            io.on("new_chat_message", function(new_message){
+                display_sent_chat_message(new_message);
+            });
+
+            io.on("send_new_message", function(message){
+                display_received_chat_message(message);
+            });
+
+            io.on('make_user_unavailable', function(call_information){
+                make_user_unavailable(call_information);
+            });
+
+            io.on('make_user_available', function(user){
+                make_user_available(user);
+            });
+
+            io.on("invite_student", function(call_information){
+                display_call_request(call_information);
+            });
+        });
+
+    </script>
+  
+<style type="text/css">.fancybox-margin{margin-right:0px;}</style></head>
+<body cz-shortcut-listen="true">
+
+
+<input type="checkbox" id="activate_menu_checkbox" class="hidden" checked="checked">
+
+<div id="menu_button">                                                                                        
+	<label for="activate_menu_checkbox" class="glyphicon glyphicon-menu-hamburger"></label>
+	<a href="http://learn.codingdojo.com/dashboard#tracks_container" class="button_text unload_link"><div class="track_button">Back to Tracks</div></a>
+	<!-- <label label for="activate_menu_checkbox" class="glyphicon menu_indicator"></label> -->
+</div>  
+
+<div class="hidden_chapter_title"><a class="chapter_title" href="javascript:void(0)">
+					<h3><span>Django Level I - Introduction</span></h3>
+					<div class="progress_container">
+						<span class="chapter_item_progress">
+							89%
+						</span>
+					</div>				
+				</a></div>
+
+<div id="sidebar" class="nano has-scrollbar" style="height: 100px;">
+	<ul id="chapter_list" class="nano-content" tabindex="0" style="right: -17px;">
+			<li class="active">
+				<a class="chapter_title unload_link" href="http://learn.codingdojo.com/m/7/3832">
+					<h3><span>Django Level I - Introduction</span></h3>
+					<div class="progress_container">
+						<span class="chapter_item_progress">
+							89%
+						</span>
+					</div>				
+				</a>
+				<ul class="tab_list" id="module_list_3832">
+
+						<li class="text has_video completed_tab " test="#&lt;ChapterModule id: 27040, chapter_id: 3832, content: &quot;{\&quot;type\&quot;:0,\&quot;data\&quot;:{\&quot;with_video\&quot;:\&quot;true\&quot;},\&quot;descriptio...&quot;, created_at: &quot;2016-11-11 03:08:55&quot;, updated_at: &quot;2016-11-11 03:08:55&quot;, module_type: 0, title: &quot;Django Introduction and Overview&quot;, admin_module_type: nil, program_type: nil&gt;">
+							<a class="tab_title unload_link" href="http://learn.codingdojo.com/m/7/3832/27040">
+								<div class="tab_label"><span class="tab_icon"></span></div>
+								<span class="tab_details" id="quiz_id_27040">
+									<h4>Django Introduction and Overview</h4> <!-- % if contents["type"] == QUIZ_MODULE % -->
+								</span>
+							</a>
+						</li>
+
+						<li class="text has_video completed_tab " test="#&lt;ChapterModule id: 27041, chapter_id: 3832, content: &quot;{\&quot;type\&quot;:0,\&quot;data\&quot;:{\&quot;with_video\&quot;:\&quot;true\&quot;},\&quot;title\&quot;:\&quot;Dj...&quot;, created_at: &quot;2016-08-04 22:40:06&quot;, updated_at: &quot;2016-08-04 22:40:06&quot;, module_type: 0, title: &quot;Django: a further introduction&quot;, admin_module_type: nil, program_type: nil&gt;">
+							<a class="tab_title unload_link" href="http://learn.codingdojo.com/m/7/3832/27041">
+								<div class="tab_label"><span class="tab_icon"></span></div>
+								<span class="tab_details" id="quiz_id_27041">
+									<h4>Django: a further introduction</h4> <!-- % if contents["type"] == QUIZ_MODULE % -->
+								</span>
+							</a>
+						</li>
+
+						<li class="text completed_tab " test="#&lt;ChapterModule id: 26193, chapter_id: 3832, content: &quot;{\&quot;type\&quot;:0,\&quot;data\&quot;:{\&quot;with_video\&quot;:\&quot;false\&quot;},\&quot;descripti...&quot;, created_at: &quot;2016-11-15 05:31:18&quot;, updated_at: &quot;2016-11-15 05:31:18&quot;, module_type: 0, title: &quot;Installing Django&quot;, admin_module_type: nil, program_type: nil&gt;">
+							<a class="tab_title unload_link" href="http://learn.codingdojo.com/m/7/3832/26193">
+								<div class="tab_label"><span class="tab_icon"></span></div>
+								<span class="tab_details" id="quiz_id_26193">
+									<h4>Installing Django</h4> <!-- % if contents["type"] == QUIZ_MODULE % -->
+								</span>
+							</a>
+						</li>
+
+						<li class="text completed_tab " test="#&lt;ChapterModule id: 26199, chapter_id: 3832, content: &quot;{\&quot;type\&quot;:0,\&quot;data\&quot;:{\&quot;with_video\&quot;:\&quot;false\&quot;},\&quot;descripti...&quot;, created_at: &quot;2017-01-18 07:44:44&quot;, updated_at: &quot;2017-01-18 07:44:44&quot;, module_type: 0, title: &quot;Big Picture&quot;, admin_module_type: nil, program_type: nil&gt;">
+							<a class="tab_title unload_link" href="http://learn.codingdojo.com/m/7/3832/26199">
+								<div class="tab_label"><span class="tab_icon"></span></div>
+								<span class="tab_details" id="quiz_id_26199">
+									<h4>Big Picture</h4> <!-- % if contents["type"] == QUIZ_MODULE % -->
+								</span>
+							</a>
+						</li>
+
+						<li class="text has_video completed_tab " test="#&lt;ChapterModule id: 26201, chapter_id: 3832, content: &quot;{\&quot;type\&quot;:0,\&quot;data\&quot;:{\&quot;with_video\&quot;:\&quot;true\&quot;},\&quot;descriptio...&quot;, created_at: &quot;2017-01-19 08:20:38&quot;, updated_at: &quot;2017-01-19 08:20:38&quot;, module_type: 0, title: &quot;Getting Started&quot;, admin_module_type: nil, program_type: nil&gt;">
+							<a class="tab_title unload_link" href="http://learn.codingdojo.com/m/7/3832/26201">
+								<div class="tab_label"><span class="tab_icon"></span></div>
+								<span class="tab_details" id="quiz_id_26201">
+									<h4>Getting Started</h4> <!-- % if contents["type"] == QUIZ_MODULE % -->
+								</span>
+							</a>
+						</li>
+
+						<li class="text has_video completed_tab " test="#&lt;ChapterModule id: 26202, chapter_id: 3832, content: &quot;{\&quot;type\&quot;:0,\&quot;data\&quot;:{\&quot;with_video\&quot;:\&quot;true\&quot;},\&quot;descriptio...&quot;, created_at: &quot;2017-01-19 08:25:55&quot;, updated_at: &quot;2017-01-19 08:25:55&quot;, module_type: 0, title: &quot;Routes and Controllers&quot;, admin_module_type: nil, program_type: nil&gt;">
+							<a class="tab_title unload_link" href="http://learn.codingdojo.com/m/7/3832/26202">
+								<div class="tab_label"><span class="tab_icon"></span></div>
+								<span class="tab_details" id="quiz_id_26202">
+									<h4>Routes and Controllers</h4> <!-- % if contents["type"] == QUIZ_MODULE % -->
+								</span>
+							</a>
+						</li>
+
+						<li class="text has_video completed_tab " test="#&lt;ChapterModule id: 26203, chapter_id: 3832, content: &quot;{\&quot;type\&quot;:0,\&quot;data\&quot;:{\&quot;with_video\&quot;:\&quot;true\&quot;},\&quot;descriptio...&quot;, created_at: &quot;2017-01-19 08:21:42&quot;, updated_at: &quot;2017-01-19 08:21:42&quot;, module_type: 0, title: &quot;Django views.py(MVC-Controller) versus Templates(M...&quot;, admin_module_type: nil, program_type: nil&gt;">
+							<a class="tab_title unload_link" href="http://learn.codingdojo.com/m/7/3832/26203">
+								<div class="tab_label"><span class="tab_icon"></span></div>
+								<span class="tab_details" id="quiz_id_26203">
+									<h4>Django views.py(MVC-Controller) versus Templates(MVC-Views)</h4> <!-- % if contents["type"] == QUIZ_MODULE % -->
+								</span>
+							</a>
+						</li>
+
+						<li class="text completed_tab " test="#&lt;ChapterModule id: 26468, chapter_id: 3832, content: &quot;{\&quot;type\&quot;:0,\&quot;data\&quot;:{\&quot;with_video\&quot;:\&quot;false\&quot;},\&quot;descripti...&quot;, created_at: &quot;2016-12-08 00:39:31&quot;, updated_at: &quot;2016-12-08 00:39:31&quot;, module_type: 0, title: &quot;Templates and Static Files&quot;, admin_module_type: nil, program_type: nil&gt;">
+							<a class="tab_title unload_link" href="http://learn.codingdojo.com/m/7/3832/26468">
+								<div class="tab_label"><span class="tab_icon"></span></div>
+								<span class="tab_details" id="quiz_id_26468">
+									<h4>Templates and Static Files</h4> <!-- % if contents["type"] == QUIZ_MODULE % -->
+								</span>
+							</a>
+						</li>
+
+						<li class="to_do completed_tab " test="#&lt;ChapterModule id: 26208, chapter_id: 3832, content: &quot;{\&quot;type\&quot;:2,\&quot;title\&quot;:\&quot;Assignment I: Time Display\&quot;,\&quot;de...&quot;, created_at: &quot;2016-12-15 04:18:45&quot;, updated_at: &quot;2016-12-15 04:18:45&quot;, module_type: 2, title: &quot;Time Display&quot;, admin_module_type: nil, program_type: nil&gt;">
+							<a class="tab_title unload_link" href="http://learn.codingdojo.com/m/7/3832/26208">
+								<div class="tab_label"><span class="tab_icon"></span></div>
+								<span class="tab_details" id="quiz_id_26208">
+									<h4>Time Display</h4> <!-- % if contents["type"] == QUIZ_MODULE % -->
+								</span>
+							</a>
+						</li>
+
+						<li class="text has_video completed_tab " test="#&lt;ChapterModule id: 26214, chapter_id: 3832, content: &quot;{\&quot;type\&quot;:0,\&quot;data\&quot;:{\&quot;with_video\&quot;:\&quot;true\&quot;},\&quot;descriptio...&quot;, created_at: &quot;2017-01-18 07:50:42&quot;, updated_at: &quot;2017-01-18 07:50:42&quot;, module_type: 0, title: &quot;Session Data and Forms&quot;, admin_module_type: nil, program_type: nil&gt;">
+							<a class="tab_title unload_link" href="http://learn.codingdojo.com/m/7/3832/26214">
+								<div class="tab_label"><span class="tab_icon"></span></div>
+								<span class="tab_details" id="quiz_id_26214">
+									<h4>Session Data and Forms</h4> <!-- % if contents["type"] == QUIZ_MODULE % -->
+								</span>
+							</a>
+						</li>
+
+						<li class="to_do completed_tab " test="#&lt;ChapterModule id: 26210, chapter_id: 3832, content: &quot;{\&quot;type\&quot;:2,\&quot;title\&quot;:\&quot;Assignment II: Random Word Gene...&quot;, created_at: &quot;2016-12-08 00:39:41&quot;, updated_at: &quot;2016-12-08 00:39:41&quot;, module_type: 2, title: &quot;Random Word Generator&quot;, admin_module_type: nil, program_type: nil&gt;">
+							<a class="tab_title unload_link" href="http://learn.codingdojo.com/m/7/3832/26210">
+								<div class="tab_label"><span class="tab_icon"></span></div>
+								<span class="tab_details" id="quiz_id_26210">
+									<h4>Random Word Generator</h4> <!-- % if contents["type"] == QUIZ_MODULE % -->
+								</span>
+							</a>
+						</li>
+
+						<li class="quiz completed_tab " test="#&lt;ChapterModule id: 26211, chapter_id: 3832, content: &quot;{\&quot;type\&quot;:1,\&quot;data\&quot;:{\&quot;questions_order\&quot;:[0,1,2,3,4,5,6...&quot;, created_at: &quot;2017-01-05 06:16:03&quot;, updated_at: &quot;2017-01-05 06:16:03&quot;, module_type: 1, title: &quot;Quiz&quot;, admin_module_type: nil, program_type: nil&gt;">
+							<a class="tab_title unload_link" href="http://learn.codingdojo.com/m/7/3832/26211">
+								<div class="tab_label"><span class="tab_icon"></span></div>
+								<span class="tab_details" id="quiz_id_26211">
+									<h4>Quiz</h4> <!-- % if contents["type"] == QUIZ_MODULE % -->
+								</span>
+							</a>
+						</li>
+
+						<li class="to_do completed_tab " test="#&lt;ChapterModule id: 26213, chapter_id: 3832, content: &quot;{\&quot;type\&quot;:2,\&quot;title\&quot;:\&quot;Assignment III: Survey Form Red...&quot;, created_at: &quot;2016-11-24 21:51:49&quot;, updated_at: &quot;2016-11-24 21:51:49&quot;, module_type: 2, title: &quot;Survey Form&quot;, admin_module_type: nil, program_type: nil&gt;">
+							<a class="tab_title unload_link" href="http://learn.codingdojo.com/m/7/3832/26213">
+								<div class="tab_label"><span class="tab_icon"></span></div>
+								<span class="tab_details" id="quiz_id_26213">
+									<h4>Survey Form</h4> <!-- % if contents["type"] == QUIZ_MODULE % -->
+								</span>
+							</a>
+						</li>
+
+						<li class="text has_video completed_tab current" test="#&lt;ChapterModule id: 26215, chapter_id: 3832, content: &quot;{\&quot;type\&quot;:0,\&quot;data\&quot;:{\&quot;with_video\&quot;:\&quot;true\&quot;},\&quot;descriptio...&quot;, created_at: &quot;2017-01-18 07:52:38&quot;, updated_at: &quot;2017-01-18 07:52:38&quot;, module_type: 0, title: &quot;Context Objects Re-explained&quot;, admin_module_type: nil, program_type: nil&gt;">
+							<a class="tab_title unload_link" href="http://learn.codingdojo.com/m/7/3832/26215">
+								<div class="tab_label"><span class="tab_icon"></span></div>
+								<span class="tab_details" id="quiz_id_26215">
+									<h4>Context Objects Re-explained</h4> <!-- % if contents["type"] == QUIZ_MODULE % -->
+								</span>
+							</a>
+						</li>
+
+						<li class="text has_video completed_tab " test="#&lt;ChapterModule id: 26216, chapter_id: 3832, content: &quot;{\&quot;type\&quot;:0,\&quot;data\&quot;:{\&quot;with_video\&quot;:\&quot;true\&quot;},\&quot;descriptio...&quot;, created_at: &quot;2017-01-18 07:54:28&quot;, updated_at: &quot;2017-01-18 07:54:28&quot;, module_type: 0, title: &quot;Route Parameters&quot;, admin_module_type: nil, program_type: nil&gt;">
+							<a class="tab_title unload_link" href="http://learn.codingdojo.com/m/7/3832/26216">
+								<div class="tab_label"><span class="tab_icon"></span></div>
+								<span class="tab_details" id="quiz_id_26216">
+									<h4>Route Parameters</h4> <!-- % if contents["type"] == QUIZ_MODULE % -->
+								</span>
+							</a>
+						</li>
+
+						<li class="quiz completed_tab " test="#&lt;ChapterModule id: 26218, chapter_id: 3832, content: &quot;{\&quot;type\&quot;:1,\&quot;data\&quot;:{\&quot;questions_order\&quot;:[0,1,2],\&quot;quest...&quot;, created_at: &quot;2017-01-19 08:30:19&quot;, updated_at: &quot;2017-01-19 08:30:19&quot;, module_type: 1, title: &quot;Quiz II&quot;, admin_module_type: nil, program_type: nil&gt;">
+							<a class="tab_title unload_link" href="http://learn.codingdojo.com/m/7/3832/26218">
+								<div class="tab_label"><span class="tab_icon"></span></div>
+								<span class="tab_details" id="quiz_id_26218">
+									<h4>Quiz II</h4> <!-- % if contents["type"] == QUIZ_MODULE % -->
+								</span>
+							</a>
+						</li>
+
+						<li class="text completed_tab " test="#&lt;ChapterModule id: 29055, chapter_id: 3832, content: &quot;{\&quot;type\&quot;:0,\&quot;data\&quot;:{\&quot;with_video\&quot;:\&quot;false\&quot;},\&quot;descripti...&quot;, created_at: &quot;2016-12-08 16:48:44&quot;, updated_at: &quot;2016-12-08 16:48:44&quot;, module_type: 0, title: &quot;Django setup summary sheet&quot;, admin_module_type: nil, program_type: nil&gt;">
+							<a class="tab_title unload_link" href="http://learn.codingdojo.com/m/7/3832/29055">
+								<div class="tab_label"><span class="tab_icon"></span></div>
+								<span class="tab_details" id="quiz_id_29055">
+									<h4>Django setup summary sheet</h4> <!-- % if contents["type"] == QUIZ_MODULE % -->
+								</span>
+							</a>
+						</li>
+
+						<li class="to_do  " test="#&lt;ChapterModule id: 26220, chapter_id: 3832, content: &quot;{\&quot;type\&quot;:2,\&quot;title\&quot;:\&quot;Assignment IV: Disappearing Nin...&quot;, created_at: &quot;2016-10-13 01:29:42&quot;, updated_at: &quot;2016-10-13 01:29:42&quot;, module_type: 2, title: &quot;Disappearing Ninjas&quot;, admin_module_type: nil, program_type: nil&gt;">
+							<a class="tab_title unload_link" href="http://learn.codingdojo.com/m/7/3832/26220">
+								<div class="tab_label"><span class="tab_icon"></span></div>
+								<span class="tab_details" id="quiz_id_26220">
+									<h4>Disappearing Ninjas</h4> <!-- % if contents["type"] == QUIZ_MODULE % -->
+								</span>
+							</a>
+						</li>
+
+						<li class="to_do  " test="#&lt;ChapterModule id: 26221, chapter_id: 3832, content: &quot;{\&quot;type\&quot;:2,\&quot;title\&quot;:\&quot;Assignment V: Ninja Gold\&quot;,\&quot;desc...&quot;, created_at: &quot;2016-11-09 17:59:24&quot;, updated_at: &quot;2016-11-09 17:59:24&quot;, module_type: 2, title: &quot;Ninja Gold (Django Version)&quot;, admin_module_type: nil, program_type: nil&gt;">
+							<a class="tab_title unload_link" href="javascript:void(0)">
+								<div class="tab_label"><span class="tab_icon"></span></div>
+								<span class="tab_details" id="quiz_id_26221">
+									<h4>Ninja Gold (Django Version)</h4> <!-- % if contents["type"] == QUIZ_MODULE % -->
+								</span>
+							</a>
+						</li>
+				</ul>
+			</li>
+			<li>
+				<a class="chapter_title unload_link" href="http://learn.codingdojo.com/m/7/3834">
+					<h3><span>Django Level II - Applications</span></h3>
+					<div class="progress_container">
+						<span class="chapter_item_progress">
+							0%
+						</span>
+					</div>				
+				</a>
+				<ul class="tab_list" id="module_list_3834">
+				</ul>
+			</li>
+			<li>
+				<a class="chapter_title unload_link" href="http://learn.codingdojo.com/m/7/3843">
+					<h3><span>Django Extras</span></h3>
+					<div class="progress_container">
+						<span class="chapter_item_progress">
+							0%
+						</span>
+					</div>				
+				</a>
+				<ul class="tab_list" id="module_list_3843">
+				</ul>
+			</li>
+			<li>
+				<a class="chapter_title unload_link" href="http://learn.codingdojo.com/m/7/3844">
+					<h3><span>Django Level III - Advanced</span></h3>
+					<div class="progress_container">
+						<span class="chapter_item_progress">
+							0%
+						</span>
+					</div>				
+				</a>
+				<ul class="tab_list" id="module_list_3844">
+				</ul>
+			</li>
+	</ul>
+<div class="nano-pane" style="display: none;"><div class="nano-slider" style="height: 1238px; transform: translate(0px, 0px);"></div></div></div>
+
+<nav id="main_navigation">
+	<div id="navbar">
+		<ul id="breadcrumbs" class="left_align">
+			<li>Python / Django</li>
+			<li>CS 224 - Django v2</li>
+			<li id="chapter_title">Django Level I - Introduction</li>
+			<li class="module_title">Context Objects Re-explained</li>
+		</ul>
+		<div id="profile_block" class="pull-right">
+			<img src="./Context Objects Re-explained _ Django Level I - Introduction_files/profile_pic.png" alt="Saman" class="profile_image">
+			<div class="dropdown">
+				<a href="http://learn.codingdojo.com/m/7/3832/26215#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					<div id="user_name_block">
+						<div>
+							<span class="decor_text">Hello,  </span> 
+							<span class="user_name">Saman M</span>
+						</div>
+					</div>
+					<span class="caret"></span>
+				</a>
+				<div class="dropdown-menu dropdown-menu-right" role="menu">
+					<div class="dropdown_content">	
+						<ul>
+							<li>
+								<a href="http://learn.codingdojo.com/dashboard">Dashboard</a>
+								<span class="glyphicon glyphicon-home pull-right" aria-hidden="true"></span>
+							</li>
+							<li>
+								<a href="http://learn.codingdojo.com/dashboard#tracks_container">Tracks</a>
+								<span class="glyphicon glyphicon-book pull-right" aria-hidden="true"></span>
+							</li>
+							<li data-target="#my_account_modal" data-toggle="modal">
+								<a href="http://learn.codingdojo.com/m/7/3832/26215#" class="view_user_info">My Account</a>
+								<span class="glyphicon glyphicon-user pull-right" aria-hidden="true"></span>
+							</li>
+							<li class="dropdown_buttons">
+								<a id="signout_button" class="btn btn-primary btn-lg btn-block unload_link" href="http://learn.codingdojo.com/signout">Log Out</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<section id="main_content">
+	<div id="content_navigation">
+
+		<div id="return_button" class="right_align">
+			<a href="http://learn.codingdojo.com/dashboard" class="unload_link">
+				<span class="glyphicon glyphicon-th-large"></span><span>Home</span> 
+			</a>
+			<input type="hidden" name="authenticity_token" value="VsUXb9kLrXQ8Ij8+g5AHzc+zymST5snmXuuLDcdWE+A=" current-module="26215"> 
+		</div>
+	</div>
+
+	<div id="section_content">
+		<div class="content_block">
+			<div id="module_container">
+				<div class="module_content module_content_block">
+								<div class="module_description active_lesson active_lesson_with_video check_for_cache"><h1>Passing Variables to Templates</h1>
+<p>
+ At this point, we’re able to hit our routes, determine whether the method was a <code>GET</code> or a <code>POST</code>, run a method from our controller/view, and then render a template. We’re still missing something: passing data back to our template via something other than <code>request.session</code>.
+</p>
+<iframe src="./Context Objects Re-explained _ Django Level I - Introduction_files/175327011.html" width="640" height="400" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="display: inline; width: 938px; min-height: 528px; height: 586.25px;" class="vimeo_responsive">
+</iframe>
+<p>
+ We should always minimize our use of <code>request.session</code>, limiting it to just a few reference pieces such as the name and ID of a logged-in user.
+</p>
+<p>
+ Not leaning on <code>session</code> demands the ability to use what are called <strong>contextual variables</strong>.
+</p>
+<pre data-language="python" class="rainbow"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render, HttpResponse, redirect
+  <span class="comment"># The render method that we are importing has two required arguments (request and the template to render), as well as some optional arguments, one of which is context</span>
+</pre>
+<p>
+ What is <strong>context</strong>? It’s just a dictionary that gets unpacked in the template, making all the keys variables that equal the corresponding value.
+</p>
+<h3>For example:</h3>
+<pre data-language="python" class="rainbow"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render, HttpResponse, redirect
+<span class="storage function">def</span> <span class="entity name function">index</span>(request):
+ context <span class="keyword operator">=</span> {
+  <span class="string">"email"</span> : <span class="string">"blog@gmail.com"</span>,
+  <span class="string">"name"</span> : <span class="string">"mike"</span>
+ }
+ <span class="keyword">return</span> <span class="function call">render</span>(request, <span class="string">"second_app/index.html"</span>, context)
+</pre>
+<p>In <code>index.html</code> the <code>context</code> dictionary gets unpacked, and we have access to <code>email</code> and <code>name</code>!</p>
+<p>In your <code>./second_app/index.html</code> template:</p>
+<pre data-language="python" class="rainbow"><span class="keyword operator">&lt;</span>html<span class="keyword operator">&gt;</span>
+  <span class="keyword operator">&lt;</span>head<span class="keyword operator">&gt;</span>
+    <span class="keyword operator">&lt;</span>meta charset<span class="keyword operator">=</span><span class="string">"utf-8"</span><span class="keyword operator">&gt;</span>
+    <span class="keyword operator">&lt;</span>title<span class="keyword operator">&gt;</span>Document<span class="keyword operator">&lt;</span>/title<span class="keyword operator">&gt;</span>
+  <span class="keyword operator">&lt;</span>/head<span class="keyword operator">&gt;</span>
+  <span class="keyword operator">&lt;</span>body<span class="keyword operator">&gt;</span>
+    <span class="keyword operator">&lt;</span>h1<span class="keyword operator">&gt;</span>Hello World<span class="keyword operator">!</span><span class="keyword operator">&lt;</span>/h1<span class="keyword operator">&gt;</span>
+      {{email}} <span class="keyword">and</span> {{name}}
+  <span class="keyword operator">&lt;</span>/body<span class="keyword operator">&gt;</span>
+<span class="keyword operator">&lt;</span>/html<span class="keyword operator">&gt;</span>
+</pre>
+</div>
+
+
+						
+
+					
+					
+					<!-- Modal Inactivity Notice Modal -->
+					<div class="modal fade info_modal" id="inactivity_notice_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+						<div class="modal-dialog" style="margin-top: 201.6px;">
+							<div class="modal-content">
+								<span class="hide_modal glyphicon glyphicon-remove" data-dismiss="modal" aria-label="Close"></span>
+								<div class="modal_header">
+									<h4>Inactivity Notice</h4>
+									<span class="glyphicon glyphicon-question-sign notice_tooltip pull-right" data-toggle="tooltip" data-placement="right" title="The system keeps track if you are active or not. We are saving the total time you spent on each topic for course improvement and student support purposes."></span>
+								</div>
+								<div class="modal_body">
+									<p>You have been idle for a long time, click the button below if you are you are still there.</p>
+									<a href="http://learn.codingdojo.com/m/7/3832/26215#" class="btn btn-primary continue_btn" data-dismiss="modal">CLICK TO CONTINUE</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- end of Modal Inactivity Notice Modal -->
+
+					<!-- Log out from another device modal --> <!-- end of Log out from another device modal -->
+				</div>
+			</div>
+
+		</div>	
+
+		<div class="content_footer_block">
+			<a class="site_terms_link" data-target=".privacy_policy_modal" data-toggle="modal">Privacy Policy</a>
+			<div id="report_mistake_label_container" class="pull-right">
+				<span>To report a mistake, highlight the selection you believe is in error.</span>
+			</div>
+		</div>
+
+		<!-- cts warning modal -->
+		<div class="modal fade info_modal cts_warning_modal" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog" style="margin-top: 201.6px;">
+				<div class="modal-content">
+					<span class="hide_modal glyphicon glyphicon-remove" data-dismiss="modal" aria-label="Close"></span>
+					<form action="http://learn.codingdojo.com/m/7/3832/26215" id="cts_warning_form">
+						<div class="modal_header"><h4>Confirm Action</h4></div>
+						<div class="modal_body">
+							<p>Only <span class="time_passed"></span> had passed since you started this assignment. Are you sure you want to view the Answersheet? The more you code on your own, the more you become a self-sufficient software engineer</p>
+							<a href="javascript:void(0);" class="btn btn-default cancel_btn" data-dismiss="modal">CANCEL</a>
+							<!-- <a href="javascript:void(0);" class="btn btn-primary submit_btn continue_btn" data-dismiss="modal">CONTINUE</a> -->
+							<input type="submit" class="btn btn-primary submit_btn continue_btn" id="view_answersheets" data-dismiss="modal" value="CONTINUE">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</div> 
+
+	<!-- Reported a mistake popover -->
+	<a href="http://learn.codingdojo.com/m/7/3832/26215#" class="hidden" id="report_mistake_popover" data-placement="bottom"></a>
+	<div class="hidden" id="report_mistake_popover_clone">
+		<span class="report_mistake_label">Report a mistake</span>
+		<form id="report_mistake_container" action="http://learn.codingdojo.com/report_mistake">
+			<h5>Report a mistake</h5>
+			<input type="hidden" name="chapter_module_id" value="26215">
+			<input type="hidden" name="authenticity_token" value="VsUXb9kLrXQ8Ij8+g5AHzc+zymST5snmXuuLDcdWE+A=">
+			<input type="hidden" name="course_id" value="1276">
+			<input type="hidden" name="track_id" value="7">
+			<textarea name="report_mistake_textarea" id="report_mistake_textarea" rows="5" placeholder="Tell us what&#39;s wrong"></textarea>
+			<input type="submit" value="SUBMIT" class="btn btn-primary btn-block">
+		</form>
+	</div>
+	<!-- END of Reported a mistake popover -->
+
+	<ul class="create_message_container">
+		<!-- Append the Chat here -->
+		<li class="chat_counter hidden"> 
+			<span class="glyphicon glyphicon-comment"></span> 
+			<span id="number_of_hidden_chat"></span>
+		</li>
+	</ul>
+	<div id="content_footer" style="width: 1325px;">	
+		<div class="prev_button">  
+			<a href="http://learn.codingdojo.com/m/7/3832/26213" class="btn btn-primary previous_button_link unload_link">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				Previous
+			</a>
+			<!-- <span class="glyphicon glyphicon-chevron-left"></span>
+			<a href="/m/7/3832/26213" class="previous_button_link unload_link">Prev</a> -->
+		</div>
+		<a href="javascript:void(0);" class="back_button">Back to Track</a>
+		<div class="next_button pull-right">
+				<a href="http://learn.codingdojo.com/m/7/3832/26216" class="btn btn-primary next_button_link unload_link">
+					Next
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</a>
+				<!-- <a href="/m/7/3832/26216" class="next_button_link unload_link">Next</a> -->
+				<a href="http://learn.codingdojo.com/m/7/3832/26216" class="real_next_link hidden"></a>
+				<!-- <span class="glyphicon glyphicon-chevron-right"></span> -->
+		</div>
+
+		<input type="hidden" id="current_module_id" name="authenticity_token" value="VsUXb9kLrXQ8Ij8+g5AHzc+zymST5snmXuuLDcdWE+A=" current-module="26215" course-percentage="24"> 
+		<div id="linkage" data-target="#inactivity_notice_modal" data-toggle="modal" style="display:none;"></div>
+	</div>
+	<!-- My Account Modal -->
+	  <div id="my_account_modal" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade">
+	    <div class="modal-dialog modal-lg">
+	      <div class="modal-content">
+	      	<span class="hide_modal glyphicon glyphicon-remove" data-dismiss="modal" aria-label="Close"></span>
+	        <div class="user_information_block">
+	          <form action="http://learn.codingdojo.com/upload_profile_pic" class="profile_pic" enctype="multipart/form-data" method="post">
+	            <input type="hidden" name="authenticity_token" value="VsUXb9kLrXQ8Ij8+g5AHzc+zymST5snmXuuLDcdWE+A=">
+	            <input id="browse_pic" class="browse_profile_pic hidden" type="file">
+	              <label for="browse_pic">
+	                <span class="profile_preview">
+	                  <img src="./Context Objects Re-explained _ Django Level I - Introduction_files/profile_pic.png" alt="Saman"> 
+	              </span>
+	              </label>
+	          </form>
+	          <ul class="list-unstyled">
+	            <li>Name: Saman Maftoun</li>
+	            <li>Email: maftoun95@gmail.com</li>
+	            <li>Password: <span class="password">************</span> <span class="change_password">change password</span></li>
+	            <li>Program Type: Onsite Flex</li>
+	            <li>Location: Seattle</li>
+	            <li>Start Date: December 12, 2016</li>
+	          </ul>
+	        </div>
+	        <form class="change_password_block">
+	          <ul class="list-unstyled">
+	            <li>
+	              <span>Old Password:</span>
+	              <input type="password" class="old_password_input match">
+	            </li>
+	            <li>
+	              <span>New Password:</span>
+	              <input type="password" class="new_password_input match">
+	            </li>
+	            <li>
+	              <span>Confirm New Password:</span>
+	              <input type="password" class="confirm_new_password_input match">
+	            </li>
+	            <li>
+	              <button type="button" class="btn btn-primary save_new_password_button">SAVE</button>
+	            </li>
+	          </ul>
+	        </form>
+	        <p class="modal-messages"></p>
+	      </div>
+	    </div>
+	  </div>    
+	<!-- end of My Account Modal  -->
+
+	<!-- Privacy Policy Modal -->
+	<div class="modal fade privacy_policy_modal" tabindex="-1" role="dialog" data-keyboard="">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<span class="hide_modal glyphicon glyphicon-remove" data-dismiss="modal" aria-label="Close"></span>
+				
+				<div id="terms_of_service">
+					<div class="greetings">
+						<p id="thank_you_greeting">Thank you for taking the time to learn about our legal policies.</p>
+						<p id="greeting">Your privacy is important to us.</p>
+					</div>
+					<div class="links">
+						<p id="privacy_policy">
+							<a href="http://www.codingdojo.com/files/Privacy_Policy.pdf" target="_blank">Privacy Policy</a>
+						</p>
+						<p id="acceptable_use">
+							<a href="http://www.codingdojo.com/files/Acceptable_Use_Policy.pdf" target="_blank">Acceptable Use</a>
+						</p>
+						<p id="site_terms">
+							<a href="http://www.codingdojo.com/files/Site_Terms.pdf" target="_blank">Site Terms</a>
+						</p>
+					</div>
+					<a href="javascript:void(0)" class="btn btn-primary" id="close_button" data-dismiss="modal">CLOSE</a>
+				</div>
+			</div>
+		</div>
+	</div> 
+
+</section>
+
+<!-- Clone Template -->
+<div id="clone_template_container" class="hidden">
+	<ul id="chat_item">
+		<li data-chat-id="" data-module-id="" class="active_chat chat"> 
+		    <input type="checkbox" class="chat_checkbox" id="" checked="checked"> 
+		    <div class="chat_container"> 	
+		        <div class="chat_header"> 
+		            <label for="chat_checkbox_" class="hide_chat"> 
+		                <span class="glyphicon glyphicon-comment"></span> 
+		                <span class="name"></span> 
+		                <span class="glyphicon glyphicon-triangle-bottom"></span> 
+		                <span class="glyphicon glyphicon-remove remove_chat"></span> 
+		            </label> 
+		        </div>  
+		        <div class="chat_body"> 
+		            <div class="settings"> 
+		                <span class="start_this_call glyphicon glyphicon-facetime-video" title="Video call. Click to start a video call."></span>
+		            </div> 
+		            <div class="conversation_container nano has-scrollbar"> 
+		                <ul class="nano-content" tabindex="0" style="right: -17px;"> 
+		                </ul> 
+		            <div class="nano-pane" style="display: none;"><div class="nano-slider" style="height: 20px; transform: translate(0px, 0px);"></div></div></div> 
+		            <div class="hidden_div"></div> 
+		        </div> 
+		        <form class="input_container"> 
+		            <textarea name="" class="form-control enter_message" placeholder="Send a message"></textarea> 
+		            <input type="hidden"> 
+		        </form> 
+		    </div> 
+		</li>
+	</ul>
+
+	<div id="video_walk_through">
+		<a class="how_we_did_video"> 
+	    	<div class="how_we_did_block">
+	        	<div id="video_logo"><img src="./Context Objects Re-explained _ Django Level I - Introduction_files/play_button.png" alt=""></div> 
+	        	<div class="how_we_did_info"> 
+	            	<span class="title">Wanna see how we did it?</span> 
+	            	<span class="video_time_to_unlock"></span> 
+	        	</div> 
+	    	</div> 
+	     </a>
+	</div>
+
+	<ul id="question_clone">
+		<li class="question"> 
+            <img src="http://learn.codingdojo.com/m/7/3832/26215" alt="profile_picture" class="profile_image"> 
+            <div class="right_question_content"> 
+                <div class="question_block">
+                    <span class="name"></span> 
+                    <span class="date"></span> 
+                    <span class="glyphicon glyphicon-remove pull-right remove_question" id=""></span> 
+                    <p class="main_question"></p> 
+                    <a href="http://learn.codingdojo.com/m/7/3832/26215#" class="add_question_answer" id="">Add answer</a> 
+                    <span class="middle_dot">·</span>
+                    <a href="http://learn.codingdojo.com/m/7/3832/26215#" class="number_of_vote" data-value=""></a> 
+                    <button id="" class="vote_up vote_button" value="1"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></button> 
+                    <button id="" class="vote_down vote_button" value="-1"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></button> 
+                </div>
+                <form class="list-unstyled create_answer_container" id="post_answer" action="http://learn.codingdojo.com/helps/post_answer" method="post"> 
+                    <img src="http://learn.codingdojo.com/m/7/3832/26215" alt="profile_picture" class="profile_image"> 
+                    <div class="create_answer_form"> 
+                        <input type="hidden" name="authenticity_token" value="VsUXb9kLrXQ8Ij8+g5AHzc+zymST5snmXuuLDcdWE+A=">
+                        <input class="answer_id_input" type="hidden" name="answer[question_id]" value="">
+                        <textarea class="form-control answer_value" name="answer[text_answer]" rows="2" placeholder=""></textarea>
+                        <div class="post_answer_buttons">
+                            <button class="btn btn-default cancel_post_answer">CANCEL</button>
+                            <button class="btn btn-primary post_reply_answer">ANSWER</button>
+                        </div>
+                    </div>
+                </form>
+                <ul class="list-unstyled answers_container">
+                </ul> 
+            </div>
+        </li>
+	</ul>
+
+	<ul id="answer_clone">
+		<li> 
+		    <div class="left_answers_block"> 
+		        <img src="http://learn.codingdojo.com/m/7/3832/26215" alt="profile_picture" class="profile_image"> 
+		    </div> 
+		    <div class="right_answers_block"> 
+		        <span class="name"></span> 
+		        <span class="date"></span> 
+		        <span class="glyphicon glyphicon-remove pull-right remove_answer" id=""></span> 
+		        <p></p> 
+		        <a href="http://learn.codingdojo.com/m/7/3832/26215#" class="number_of_vote" data-value=""></a> 
+		        <button id="" class="vote_up vote_button answer_vote" value="1"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></button> 
+		        <button id="" class="vote_down vote_button answer_vote" value="-1"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></button> 
+		    </div> 
+		</li>
+	</ul>
+</div>
+
+<!-- Html5 Videos speed Clone -->
+<div class="hidden html5_video_speed_clone">
+	<div class="btn-group" role="group" aria-label="..."> 
+		<button type="button" class="btn btn-default reduce_video_speed"> <span class="glyphicon glyphicon-minus"></span> </button> 
+		<button type="button" class="btn btn-default current_speed">1.0</button>
+		<button type="button" class="btn btn-default add_video_speed"> <span class="glyphicon glyphicon-plus"></span> </button>
+	</div>
+</div>
+
+<div id="page_info">
+	<input type="hidden" value="http://learn.codingdojo.com/m/7/3832/26215">
+	<input type="hidden" value="7">
+	<input type="hidden" value="1276">
+	<input type="hidden" value="3832">
+	<input type="hidden" id="module_id_current" value="26215">
+	<input type="hidden" value="73.181.233.29">
+	<input type="hidden" value="14527" id="page_current_user" user="Saman Maftoun">
+</div>
+
+
+
+
+
+<div class="quiz_result_details_block" id="quiz_result_details" style="display: none;">
+	<div class="quiz_result_user_image">
+		<img src="./Context Objects Re-explained _ Django Level I - Introduction_files/profile_pic.png" alt="Saman" class="profile_image">
+	</div>
+	<div class="quiz_result_info">
+		<h3 id="user_name"></h3>
+		<p id="quiz_date"></p>
+	</div>
+	<div class="clear"></div>
+	<p class="quiz_result_score"></p>
+	<div class="quiz_result_content">
+	</div>
+</div>
+		
+
+
+<script>
+	/* for showing of checklist details in chapter module page */
+
+    var checklist_details = JSON.parse('null');
+
+    if(checklist_details != null){
+    	
+        if(Object.keys(checklist_details).length > 0){
+            var days = ["", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+            var level = ["", "Basic", "Intermediate", "Advanced", "Hacker"];
+            var details_to_append = '<ul class="list-inline information_checklist_list">';
+
+            $.each(checklist_details, function(index, value){
+                switch(index){
+                    case 'is_optional':
+                        status = (value == 1) ? "Optional" : "Mandatory";
+                        details_to_append += '<li>'+status+'</li>';
+                        break;
+                    case 'day':
+                        if(value && checklist_details.week != 0){
+                            details_to_append += "<li>Deadline: "+days[value]+" of Week "+checklist_details.week+"</li>"
+                        }
+                        break;
+                    case 'difficulty_level':
+                        if(value != 0 && value != null)
+                        details_to_append += "<li>Difficulty Level: "+level[value]+"</li>";
+                        break;
+                    case 'estimated_time':
+                        if(value != "" && value != null){
+                            details_to_append += "<li>Estimated Time: "+value+"</li>";
+                        }
+                        break;
+                }
+            });
+
+            details_to_append += "</ul>";
+            $(details_to_append).insertAfter("h2:first");  
+        }
+    }
+</script>
+<script type="text/javascript" src="http://learn.codingdojo.com/m/7/3832/26215"></script>
+
+
+<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div></body></html>
