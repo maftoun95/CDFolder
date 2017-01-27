@@ -5,7 +5,7 @@
 	<title>Success Page</title>
 </head>
 <body>
-	<h1>Congradulations {{request.session.fname}}, you've logged in</h1><br><br>
+	<h1>Congradulations {{request.session['fname']}}, you've logged in</h1><br><br><br>
 	<a href="/logout">Logout</a>
 </body>
 </html>

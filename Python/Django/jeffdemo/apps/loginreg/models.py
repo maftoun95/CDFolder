@@ -40,6 +40,13 @@ class UserManager(models.Manager):
 			hashish = bcrypt.hashpw(postData['password'].encode(), bcrypt.gensalt())
 			newser = self.create(first_name=postData['first_name'], last_name=postData['last_name'], email=postData['email'], password=hashish)
 			modelsResponse['user'] = newser
+		print errors
+		print modelsResponse
+		print "POST DATA:       ",postData
+		print "confirm", postData['confirm']
+		print "password", postData['password']
+		print "email", postData['email']
+		print type(postData['email'])
 		return modelsResponse
 
 	def loginVal(self, postData):
@@ -49,9 +56,9 @@ class UserManager(models.Manager):
 		if not user:
 			errors.append('The provided email is not in our system.')
 		else:
-			if bcrypt.checkpw(postData['password'].encode(), user[0].password.encode()):
+			if bcrypt.checkpw(postData['password'].encode(), user[0].password):
 				modelsResponse['isLoggedIn'] = True
-				modelsResponse['user'] = user[0]
+				modelsResponse['user'] = user
 			else:
 				errors.append('email/password combination did not match...')
 		if errors:

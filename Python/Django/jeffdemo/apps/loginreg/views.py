@@ -14,10 +14,15 @@ def login(request):
 		request.session['user_ID'] = viewsResponse['user'].id
 		request.session['fname'] = viewsResponse['user'].first_name
 		return redirect('users:success')
-	else:
-		for error in viewsResponse['errors']:
-			messages.error(request, error)
-		return redirect('users:index')
+
+
+	if request.method == 'POST':
+		user = Users.objects.loginVal(request.POST)
+		if 'user' in user:
+			return redirect('success')
+		else:
+			for bammer in response:
+				messages.error(request, bammer)
 
 def register(request):
 	print "-------------------", request.POST
@@ -33,9 +38,6 @@ def register(request):
 		return redirect('/')
 
 def success(request):
-	if not 'user_ID' in request.session:
-		messages.error(request, 'You don\'t have permission to access that page, please log in')
-		return redirect('users:index')
 	return render(request, 'loginreg/success.html')
 
 def logout(request):
