@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^products/(?P<id>\d+)$', views.show, name = 'show'),
     url(r'^products/(?P<id>\d+)/edit$', views.edit),
     url(r'^products/(?P<id>\d+)/delete$', views.destroy),
+    url(r'^products/(?P<id>\d+)/update$', views.update),
     url(r'^create$', views.create),
 ]

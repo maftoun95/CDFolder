@@ -9,9 +9,6 @@ class ProductManager(models.Manager):
 		errors = []
 		if not PRICE_REGEX.match(postData['price']):
 			errors.append('numbers only for price please!!')
-		here = self.filter(name=postData['name'])
-		if here:
-			errors.append('That product is already listed. Anything else you\'d like to add??')
 		modelsResponse = {}
 
 		if errors:
@@ -22,17 +19,28 @@ class ProductManager(models.Manager):
 			newProd = self.create(name=postData['name'], description=postData['description'], price=postData['price'])
 			modelsResponse['prod'] = newProd
 		return modelsResponse
+
+
 	def list(self):
-		print "the selffffffffffffffffffffffffffff ",self
 		list = self.all()
 		return list
-	 def getProd(self, id):
-	 	item = self.filter(id=id)
+
+	def getProd(self, id):
+	 	item = self.filter(id=id).first()
 	 	return item
+
+	def destroy(self, id):
+		self.filter(id=id).delete()
+
+	def update(self, id, postData):
+		item = self.get(id=id)
+		item.name = postData['name']
+		item.description = postData['description']
+		item.price = postData['price']
+		item.save()
 
 # Create your models here.
 class Product(models.Model):
-	"""docstring for Users"""
 	name = models.CharField(max_length=100)
 	description = models.CharField(max_length=100)
 	price = models.CharField(max_length=255)

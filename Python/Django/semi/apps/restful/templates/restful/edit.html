@@ -3,8 +3,22 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Update Product</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	Update this product
+	<div class="container">
+		<h1>Add new products here</h1><br>
+		<form action="/products/{{prod.id}}/update" method="POST">
+			{% csrf_token %}
+			Name: <input type="text" name="name" value="{{prod.name}}"><br><br>
+			Description: <input type="text" name="description" value="{{prod.description}}"><br><br>
+			Price: <input type="text" name="price" value="{{prod.price}}"><br><br>
+			<input type="submit">
+		</form> <br>
+		<br>
+		<br><br><br>
+		<a href="/">Go back</a>
+	</div>
 </body>
 </html>

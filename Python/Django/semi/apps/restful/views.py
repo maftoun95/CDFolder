@@ -20,16 +20,18 @@ def show(request, id):
 		'id' : id,
 		'prod' : prod
 	}
-	return render(request, 'restful/show.html')
+	return render(request, 'restful/show.html', context)
 
 def new(request):
 	return render(request, 'restful/new.html')
 
 def edit(request, id):
+	prod = Product.objects.getProd(id)
 	context = {
-		'id' : id
+		'id' : id,
+		'prod' : prod
 	}
-	return render(request, 'restful/edit.html')
+	return render(request, 'restful/edit.html', context)
 
 def create(request):
 	viewsResponse = Product.objects.createProd(request.POST)
@@ -42,11 +44,10 @@ def create(request):
 		return redirect('/')
 
 
-def update(request):
+def update(request, id):
+	Product.objects.update(id, request.POST)
 	return redirect('/')
 
 def destroy(request, id):
-	context = {
-		'id' : id
-	}
+	Product.objects.destroy(id)
 	return redirect('/')

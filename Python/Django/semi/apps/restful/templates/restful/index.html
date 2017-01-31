@@ -3,18 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Product Display Page</title>
+	{% load static %}
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="{% static  'restful/css/style.css' %}">
 </head>
 <body>
 	<div class="container">
+		{% if messages %}
+			{% for error in messages  %}
+				<p>{{error}}</p>
+			{% endfor %}
+		{% endif %}
 	<h1>Products</h1>
-	<table class="table table-bordered" >
+	<table class="table table-bordered table-hover" >
 		<tr>
-			<th>Name</th>
-			<th>Description</th>
-			<th>Price</th>
-			<th>Actions</th>
+			<th><mark> Name</mark></th>
+			<th><mark>Description</mark></th>
+			<th><mark>Price</mark></th>
+			<th><mark>Actions</mark></th>
 		</tr>
 		{% if products %}
 			{% for product in products %}
@@ -22,7 +29,7 @@
 					<td>{{product.name}}</td>
 					<td>{{product.description}}</td>
 					<td>{{product.price}}$</td>
-					<td><a href="products/{{product.id}}">Show</a> | <a href="/products/{{product.id}}/edit">Edit</a> | <a href="/products/{{product.id}}/delete">Remove</a></td>
+					<td><a href="products/{{product.id}}" class="btn btn-primary btn-sm">Show</a> | <a href="/products/{{product.id}}/edit" class="btn btn-info btn-sm">Edit</a> | <a href="/products/{{product.id}}/delete" class="btn btn-danger btn-sm">Remove</a></td>
 				</tr>
 			{% endfor %}
 		{% endif %}
