@@ -3,8 +3,36 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Product Display Page</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h1>home page</h1>
+	<div class="container">
+	<h1>Products</h1>
+	<table class="table table-bordered" >
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Price</th>
+			<th>Actions</th>
+		</tr>
+		{% if products %}
+			{% for product in products %}
+				<tr>
+					<td>{{product.name}}</td>
+					<td>{{product.description}}</td>
+					<td>{{product.price}}$</td>
+					<td><a href="products/{{product.id}}">Show</a> | <a href="/products/{{product.id}}/edit">Edit</a> | <a href="/products/{{product.id}}/delete">Remove</a></td>
+				</tr>
+			{% endfor %}
+		{% endif %}
+	</table>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<a href="products/new">Add a new product</a>
+	</div>
 </body>
 </html>

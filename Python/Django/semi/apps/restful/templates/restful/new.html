@@ -3,8 +3,22 @@
 <head>
 	<meta charset="UTF-8">
 	<title>New Product Form</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	Add new products here
+	<div class="container">
+		<h1>Add new products here</h1><br>
+		<form action="/create" method="POST">
+			{% csrf_token %}
+			Name: <input type="text" name="name"><br><br>
+			Description: <input type="text" name="description"><br><br>
+			Price: <input type="text" name="price"><br><br>
+			<input type="submit">
+		</form> <br>
+		<br>
+		<br>
+		<a href="/">Go back</a>
+	</div>
 </body>
 </html>

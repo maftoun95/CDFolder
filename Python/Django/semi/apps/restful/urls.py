@@ -3,10 +3,11 @@ from . import views
 
 ###############################REMEMBER only using GET and POST...... semi restful
 urlpatterns = [
-    url(r'^$', views.index),
+    url(r'^$', views.home),
     url(r'^products$', views.index),
     url(r'^products/new$', views.new),
-    url(r'^products/show$', views.show), #change to products/<id>
-    url(r'^products/edit$', views.edit), #change to products/<id>/edit
-    url(r'^products/delete$', views.destroy), #change to products/<id>/delete
+    url(r'^products/(?P<id>\d+)$', views.show, name = 'show'),
+    url(r'^products/(?P<id>\d+)/edit$', views.edit),
+    url(r'^products/(?P<id>\d+)/delete$', views.destroy),
+    url(r'^create$', views.create),
 ]
