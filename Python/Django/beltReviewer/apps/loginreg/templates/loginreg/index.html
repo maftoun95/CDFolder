@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login/ Registration</title>
+	<style type="text/css">
+		li {
+			list-style: none;
+			padding: 7px;
+		}
+	</style>
+</head>
+<body>
+	{% if messages %}
+		{% for message in messages %}
+			<p> {{message}} </p>
+		{% endfor %}
+	{% endif %}
+	<h1>Sign Up:</h1>
+	<form action="{% url 'users:reg' %}" method="POST">
+	{% csrf_token %}
+		<ul>
+			<li>
+				First Name: <input type="text" name="first_name">
+			</li>
+			<li>
+				Last Name: <input type="text" name="last_name">
+			</li>
+			<li>
+				Email: <input type="text" name="email">
+			</li>
+			<li>
+				Password: <input type="password" name="password">
+			</li>
+			<li>
+				Confirm Password:<input type="password" name="confirm">
+			</li>
+			<li>
+				<input type="submit" value="~Register~">
+			</li>
+		</ul>
+	</form>
+	<h1>Login:</h1>
+	<form action="{% url 'users:login' %}" method="POST">
+	{% csrf_token %}
+		<ul>
+			<li>
+				Email: <input type="text" name="email">
+			</li>
+			<li>
+				Password: <input type="password" name="password">
+			</li>
+			<li>
+				<input type="submit" value="~Login~">
+			</li>
+		</ul>
+	</form>
+</body>
+</html>

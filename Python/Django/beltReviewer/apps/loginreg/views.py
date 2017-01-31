@@ -7,6 +7,7 @@ def index(request):
 	return render(request, 'loginreg/index.html')
 
 def login(request):
+	print "-------------------", request.POST
 	viewsResponse = Users.objects.loginVal(request.POST)
 
 	if viewsResponse['isLoggedIn']:
@@ -19,7 +20,9 @@ def login(request):
 		return redirect('users:index')
 
 def register(request):
+	print "-------------------", request.POST
 	viewsResponse = Users.objects.registerVal(request.POST)
+	print "The response from manager.regVal.     ", viewsResponse
 	if viewsResponse['isRegistered']:
 		request.session['user_ID'] = viewsResponse['user'].id
 		request.session['fname'] = viewsResponse['user'].first_name
