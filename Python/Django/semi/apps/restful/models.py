@@ -20,7 +20,6 @@ class ProductManager(models.Manager):
 			modelsResponse['prod'] = newProd
 		return modelsResponse
 
-
 	def list(self):
 		list = self.all()
 		return list
