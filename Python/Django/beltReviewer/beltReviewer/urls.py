@@ -17,6 +17,6 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^', include('apps.books.urls')),
-    url(r'^', include('apps.restful.urls')),
+    url(r'^books', include('apps.books.urls', namespace="books")),
+    url(r'^', include('apps.loginreg.urls', namespace="users")),
 ]
