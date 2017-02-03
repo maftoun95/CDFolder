@@ -2,9 +2,16 @@
 {% block content %}
 <div class="container">
 
-<h1>Welcom, {{request.session.fname}}</h1>
+<h1>Welcome, {{request.session.fname}}</h1>
 <div class="rmenu">
 <a href="#">Add Book and Review</a> ~ | ~ <a href="/logout">Logout</a>
+</div>
+<div class="col-md-8">
+  <h2>Recent Book Reviews:</h2>
+  <!-- loop for the latest 3 reviews -->
+</div>
+<div class="col-md-4">
+  <h2>Other books:</h2>
 </div>
 </div>
 {% endblock content %}
