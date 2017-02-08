@@ -6,7 +6,7 @@ namespace ConsoleApplication
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // Console.WriteLine("Hello World!");
 
             // oneto255();
             // threeOrFive();
@@ -32,7 +32,7 @@ namespace ConsoleApplication
         }
         public static void fizzBuzz()
         {
-            for (int i = 1; i <= 1000; i++)
+            for (int i = 1; i <= 100; i++)
             {
                 if (i % 3 == 0 && i % 5 == 0)
                 {
@@ -50,19 +50,19 @@ namespace ConsoleApplication
         }
         public static void fizzBuzzALT()
         {
-            for (var i = 1; i <= 1000; i++)
+            for (var i = 1; i <= 100; i++)
             {
                 if ((float)i / (float)3 == 0 && (float)i / (float)5 == 0)
                 {
-                    Console.WriteLine("FizzBuzz");
+                    Console.WriteLine($"FizzBuzz. the value of i is {i}");
                 }
                 else if((float)i / (float)5 == 0)
                 {
-                    Console.WriteLine("Buzz");
+                    Console.WriteLine($"Buzz. the value of i is {i}");
                 }
                 else if ((float)i / (float)3 == 0)
                 {
-                    Console.WriteLine("Fizz");
+                    Console.WriteLine($"Fizz. the value of i is {i}");
                 }
             }
         }
