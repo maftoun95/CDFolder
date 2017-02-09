@@ -5,7 +5,10 @@ namespace ConsoleApplication{
     public class Algorithms{
         public void print1to255(){
             for (int i = 1; i <= 255; i++){
-                System.Console.WriteLine(i);
+                //When using namespace System no need to include the entry point of Console.WriteLine
+                //Not an error or anything it will just save you some time
+                //System.Console.WriteLine(i);
+                Console.WriteLine(i);
             }
         }
         public void printOdd(){
@@ -20,6 +23,7 @@ namespace ConsoleApplication{
                 System.Console.WriteLine("New number: {0} Sum: {1}", i , sum );
             }
         }
+        //This is a solid use of Generics! (using Array that is)
         public void iterating(Array arr){
             if (arr.Length > 0){
                 foreach (int val in arr){
@@ -59,7 +63,9 @@ namespace ConsoleApplication{
                 System.Console.WriteLine("position {0} is {1}", i, y[i]);
             }
         }
-        public void greaterThan(double[]arr, int y){
+        //Be consistent and add some spacing between type and variable name
+        //ex. double[]arr vs double[] arr
+        public void greaterThan(double[] arr, int y){
             int count = 0;
             for (int i = 0; i < arr.Length; i++){
                 if (arr[i] > y){
@@ -76,7 +82,7 @@ namespace ConsoleApplication{
                 System.Console.WriteLine("position {0} is {1}", i, arr[i]);
             }
         }
-        public void noNegatives(double[]arr){
+        public void noNegatives(double[] arr){
             for (int i = 0; i < arr.Length; i++){
                 if (arr[i] < 0){
                     arr[i] = 0;
@@ -86,7 +92,7 @@ namespace ConsoleApplication{
                 System.Console.WriteLine("position {0} is {1}", i, arr[i]);
             }
         }
-        public void mMA(double[]arr){
+        public void mMA(double[] arr){
             double min = arr[0];
             double max = arr[0];
             double sum = 0;
@@ -104,7 +110,7 @@ namespace ConsoleApplication{
             System.Console.WriteLine($"max is {max}");
             System.Console.WriteLine($"avg is {sum/len}");
         }
-        public void shiftee(double[]arr){
+        public void shiftee(double[] arr){
             for (int i = 0; i < arr.Length; i++){
                 if (i == arr.Length-1){
                     arr[i] = 0;
@@ -116,7 +122,9 @@ namespace ConsoleApplication{
                 System.Console.WriteLine($"Post shift, position {i} is {arr[i]}");
             }
         }
-        public void numString(double[]arr){
+        //This method requested that the new array be returned
+        public object[] numString(double[] arr) {
+        //public void numString(double[]arr){
             List<object> result = new List<object>();
             for (int i = 0; i < arr.Length; i++){
                 if (arr[i] < 0){
@@ -128,6 +136,7 @@ namespace ConsoleApplication{
             for (int i = 0; i < arr.Length; i++){
                 System.Console.WriteLine($"Post stringification, position {i} is {result[i]}");
             }
+            return result.ToArray();
         }
     }
 }
