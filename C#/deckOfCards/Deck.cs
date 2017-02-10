@@ -49,6 +49,7 @@ namespace ConsoleApplication{
                     cards.Add(new Card(suit, i));
                 }
             }
+            return cards;
         }
         //override the ToString method. make it work for US!!
         public override string ToString(){

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace ConsoleApplication{
@@ -6,7 +5,7 @@ namespace ConsoleApplication{
         //name is a string
         public string name;
         //instantiate hand. Expect it to be a List of strings
-        private List<string> hand;
+        private List<Card> hand;
         //the Player creator function. Pass the players name
         public Player(string n){
             // do the other end of the hand creation. Set hand to be a list of strings
@@ -24,7 +23,7 @@ namespace ConsoleApplication{
             // copy the value of the desired card to a temp so it doesnt disapear after removal
             Card temp = hand[idx];
             // remove the card
-            hand.RemoveAt[idx];
+            hand.RemoveAt(idx);
             // return the temp; same thing as the removed card
             return temp;
             
