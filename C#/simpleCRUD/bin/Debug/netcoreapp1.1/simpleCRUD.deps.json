@@ -1,0 +1,49 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v1.1",
+    "signature": "e7209af55effce8875c1f586e60ebc5519377bcd"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v1.1": {
+      "simpleCRUD/1.0.0": {
+        "dependencies": {
+          "MySqlConnector": "0.1.0-alpha12"
+        },
+        "runtime": {
+          "simpleCRUD.dll": {}
+        }
+      },
+      "MySqlConnector/0.1.0-alpha12": {
+        "dependencies": {
+          "System.Data.Common": "4.0.1-rc2-24027"
+        },
+        "runtime": {
+          "lib/netstandard1.3/MySqlConnector.dll": {}
+        }
+      },
+      "System.Data.Common/4.0.1-rc2-24027": {
+        "runtime": {
+          "lib/netstandard1.0/System.Data.Common.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "simpleCRUD/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MySqlConnector/0.1.0-alpha12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ldQBrhbgc6v8Qn7eb9QKRzfXsUw8X1YU3dlxbVv8nm5dWTiEyrpnK15ZoNnTTC2cA9f24e8IDGO8Nm1y+tabyQ=="
+    },
+    "System.Data.Common/4.0.1-rc2-24027": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lRXa2KTxiXF9LYhisFYWqokvtkV662ROEVJbtRG4owk/7PRvyV92gZLaDykYuNxtnscesaVIWDRWkfFfaxXmqA=="
+    }
+  }
+}
