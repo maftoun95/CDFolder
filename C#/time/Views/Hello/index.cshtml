@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title></title>
+        <link rel="stylesheet" href="~/css/style.css"/>
+    </head>
+    <body>
+        <div class="head">
+            <h2>The current time and date:</h2>
+        </div>
+        <div class="time">
+            @{
+			    DateTime CurrentDate = DateTime.Today;
+			    DateTime CurrentTime = DateTime.Now;
+			    string CurrDate = CurrentDate.ToString("MMM dd, yyyy");
+			    string CurrTime = CurrentTime.ToString("T");
+		    }
+		    <h1>@CurrDate</h1>
+		    <h1>@CurrTime</h1>
+        </div>
+    </body>
+</html>

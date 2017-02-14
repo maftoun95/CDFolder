@@ -1,0 +1,19 @@
+h1{
+    color: DarkOrchid;
+}
+
+.time {
+    text-align: center;
+    border: 8px groove DarkMagenta;
+    width: 50%;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.head {
+    text-align: center;
+    border: 2px solid DarkViolet;
+    width: 30%;
+    padding: 5px;
+    margin: 13px auto;
+}
