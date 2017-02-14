@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="row">
+    <form action="/submitData" method="POST">
+        Your name: <input type="text" class="ilb" name="name">
+        Dojo Location: <select name="loc" class="ilb">
+            <option value="Seattle">Seattle</option>
+            <option value="San Jose">San Jose</option>
+            <option value="Orland">Orland</option>
+            <option value="Austin">Austin</option>
+        </select>
+        Favorite Language: <select name="lang" class="ilb">
+            <option value="javaScript">javaScript</option>
+            <option value="Python">Python</option>
+            <option value="C#">C#</option>
+            <option value="Swift">Swift</option>
+        </select>
+        Comment (optional): <textarea name="comment" id="" cols="44" rows="10" class="ilb"></textarea>
+        <input type="submit" class="ilb">
+    </form>
+</div>

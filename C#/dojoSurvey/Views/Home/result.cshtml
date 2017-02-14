@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "Survey Results";
+}
+<div class="row">
+    <div class="head">
+        <h1>Submitted Info</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Name:</h2>
+        <h2>Location:</h2>
+        <h2>Favorite Language</h2>
+        <h2>Comments:</h2>
+    </div>
+    <div class="col-md-8">
+    <h2>@ViewBag.name</h2>
+    <h2>@ViewBag.loc</h2>
+    <h2>@ViewBag.lang</h2>
+    <h2>@ViewBag.comment</h2>
+    </div>
+</div>
