@@ -1,0 +1,9 @@
+/*Write all of your CSS here*/
+.tama div{
+    border: 3px solid darkolivegreen;
+    border-radius: 7px;
+}
+
+.col-md-3 {
+    text-align: center;
+}
