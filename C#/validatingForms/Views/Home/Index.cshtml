@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+    foreach(var msg in @ViewBag.errors) {
+        <p style="color: darkred">@msg.Errors[0].ErrorMessage</p>
+    }
+}
+<br>
+<br>
+<h1>Enter your information here:</h1> <br><br>
+<form action="/" method="post">
+    First name: <input type="text" name="FirstName"><br><br>
+    Last name: <input type="text" name="LastName"><br><br>
+    Age: <input type="text" name="Age"><br><br>
+    Email: <input type="text" name="Email"><br><br>
+    Password: <input type="text" name="Password"><br><br>
+    <input type="submit" value="Submit">
+</form>

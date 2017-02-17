@@ -32,18 +32,32 @@ namespace dojodachi.Controllers{
             ViewBag.nrg = HttpContext.Session.GetInt32("energy");
             return View();
         }
+        //#############################
         [HttpPost]
         [RouteAttribute("/feed")]
         public IActionResult Feed(){
             string msg;
+            string img;
             int yums = (int)HttpContext.Session.GetInt32("meals");
             int fullness = (int)HttpContext.Session.GetInt32("fullness");
             Random rand = new Random();
 
             if (yums <=0){
                 msg = "You dont have enough meals broski : (";
+            } else {
+                yums -= 1;
+                if (rand.Next(1, 5) == 3){
+                    System.Console.WriteLine("The meal.... went poorly");
+                    msg = "Hmmm, I seem to have had a bad reaction....";
+                    
+                } else {
+                    System.Console.WriteLine("YUM YUUUUUMMM");
+                    fullness += rand.Next(5,11);
+                    msg = "That wasnt too bad! Yum yuuumm~";
+                }
+
             }
-            return View();
+            return View(); //EVENTUALLY RETURN A NEW JSON OBJ
         }
     }
 }
