@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Quoting Dojo";
+}
+<div class="row">
+    <div class="col-md-2 col-md-offset-10">
+        <a href="/" class="btn btn-danger">Back</a>
+    </div>
+</div>
+<h1>Behold! All the quotes!</h1>
+
+@{
+    foreach(var post in @ViewBag.quotes) {
+        <div class="row">
+            <h3>" @post.Quote "</h3>
+            <h3>~ @post.Name at @post.Created_At</h3>
+        </div>
+    }
+}

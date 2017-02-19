@@ -20,7 +20,6 @@ namespace validatingForms.Controllers
         [HttpPostAttribute("")]
         public IActionResult Index(User user)
         {
-            // TryValidateModel(user);
             if (ModelState.IsValid)
             {
                 System.Console.WriteLine("sure, bro");
