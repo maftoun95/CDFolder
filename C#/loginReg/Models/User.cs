@@ -2,8 +2,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace loginReg.Models
 {
-    public class User
+    public abstract class BaseEntity {}
+    public class User :BaseEntity
     {
+        [Key]
+        public int Id { get; set; }
+
         [Required]
         [MinLength(2)]
         public string FirstName { get; set; }
