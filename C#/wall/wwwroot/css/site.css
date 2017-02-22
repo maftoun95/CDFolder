@@ -1,0 +1,10 @@
+/*Write all of your CSS here*/
+.err {
+    color: darkred;
+}
+
+.bad {
+    font-weight: bolder;
+    font-style: italic;
+    text-align: center;
+}
