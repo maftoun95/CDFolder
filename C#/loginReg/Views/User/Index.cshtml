@@ -5,31 +5,33 @@
 <h1>Lets Login!</h1>
 <h2>Heres how the game works, log in successfully and you win!</h2>
 <div class="row">
+    <h1 class="bad err">@TempData["fail"]</h1>
     <div class="col-md-6">
         <div class="well">
+            <p class="err" >@ViewBag.regFail</p>
             <form asp-controller="User" asp-action="RegisterUser" method="post">
                 <div class="form-group">
-                    <span asp-validation-for="FirstName"></span>
+                    <span class="err" asp-validation-for="FirstName"></span>
                     <label asp-for="FirstName" >First Name</label>
                     <input class="form-control" asp-for="FirstName"/>
                 </div>
                 <div class="form-group">
-                    <span asp-validation-for="LastName"></span>
+                    <span class="err" asp-validation-for="LastName"></span>
                     <label asp-for="LastName">Last Name</label>
                     <input class="form-control" asp-for="LastName"/>
                 </div>
                 <div class="form-group">
-                    <span asp-validation-for="Email"></span>
+                    <span class="err" asp-validation-for="Email"></span>
                     <label asp-for="Email"></label>
                     <input class="form-control" asp-for="Email"/>
                 </div>
                 <div class="form-group">
-                    <span asp-validation-for="Password"></span>
+                    <span class="err" asp-validation-for="Password"></span>
                     <label asp-for="Password"></label>
                     <input class="form-control" asp-for="Password"/>
                 </div>
                 <div class="form-group">
-                    <span asp-validation-for="Confirm"></span>
+                    <span class="err" asp-validation-for="Confirm"></span>
                     <label asp-for="Confirm">Confirm Password</label>
                     <input class="form-control" asp-for="Confirm"/>
                 </div>
@@ -39,14 +41,13 @@
     </div>
     <div class="col-md-6">
         <div class="well">
+            <p class="err" >@TempData["errors"]</p>
             <form asp-controller="User" asp-action="LoginUser" method="post">
                 <div class="form-group">
-                    <span asp-validation-for="Email"></span>
                     <label asp-for="Email"></label>
                     <input class="form-control" asp-for="Email"/>
                 </div>
                 <div class="form-group">
-                    <span asp-validation-for="Password"></span>
                     <label asp-for="Password"></label>
                     <input class="form-control" asp-for="Password"/>
                 </div>
