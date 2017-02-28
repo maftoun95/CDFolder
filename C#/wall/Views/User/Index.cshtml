@@ -1,12 +1,15 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+@model wall.Models.User
+<h1 class="bad BANG">Lets do this. WALL STYLE!</h1>
 <div class="row">
     <h1 class="bad err">@TempData["fail"]</h1>
     <div class="col-md-6">
         <div class="well">
             <p class="err" >@ViewBag.regFail</p>
-            <form asp-controller="User" asp-action="RegisterUser" method="post">
+            <form asp-controller="user" asp-action="RegisterUser" method="post">
+                <h4 class="bad">Sign up:</h4>
                 <div class="form-group">
                     <span class="err" asp-validation-for="FirstName"></span>
                     <label asp-for="FirstName" >First Name</label>
@@ -39,7 +42,8 @@
     <div class="col-md-6">
         <div class="well">
             <p class="err" >@TempData["errors"]</p>
-            <form asp-controller="User" asp-action="LoginUser" method="post">
+            <h4 class="bad">Log in:</h4>
+            <form asp-controller="user" asp-action="LoginUser" method="post">
                 <div class="form-group">
                     <label asp-for="Email"></label>
                     <input class="form-control" asp-for="Email"/>

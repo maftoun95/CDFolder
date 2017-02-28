@@ -8,3 +8,26 @@
     font-style: italic;
     text-align: center;
 }
+
+.BANG {
+    color: olivedrab;
+}
+body {
+    font-family: Georgia;
+}
+
+.headr {
+    border-bottom: slategrey solid 2px;
+    vertical-align: middle;
+
+}
+
+.btn-danger {
+    vertical-align: middle;
+    margin-top: 15px;
+}
+
+.sub {
+    margin-top: 15px;
+    margin-left: 10px;
+}

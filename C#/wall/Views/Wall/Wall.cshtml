@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "The Wall";
+}
+@model wall.Models.Message 
+<div class="row headr">
+    <div class="col-md-3">
+        <h2>CodingDojo Wall</h2>
+    </div>
+    <div class="col-md-3 col-md-offset-4">
+        <h3>Welcome @ViewBag.first</h3>
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-danger" href="/logout">Log Off</a>
+    </div>
+</div>
+
+<h3>Post a message:</h3>
+<form asp-controller="message" asp-action="AddComment {@ViewBag.uid}" method="post">
+    <span class="err" asp-validation-for="text"></span>
+    <label asp-for="text">Message:</label>
+    <textarea asp class="form-control" rows="5" asp-for="text"></textarea>
+    <input class="sub btn btn-primary" type="submit" value="~Post a message~">
+</form>
