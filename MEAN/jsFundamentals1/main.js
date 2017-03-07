@@ -37,8 +37,6 @@ console.log(min);
 var totes = 0;
 for(var i = 0;i<len;i++){
   totes += testArr[i];
-  console.log(totes);
-  console.log("len, "+len);
   console.log("totes is currently: "+totes)
 }
 console.log(totes/len);
