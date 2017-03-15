@@ -1,0 +1,8 @@
+[
+  { "name": "Matt P", "home_state": "IL", "lucky_number": 420, "birthday": { "month": 3, "day": 27, "year": 1992 } },
+  { "name": "Max R", "home_state": "CA", "lucky_number": 69, "birthday": { "month": 5, "day": 13, "year": 1990 } },
+  { "name": "Saman M", "home_state": "WA", "lucky_number": 13, "birthday": { "month": 1, "day": 10, "year": 1942 } },
+  { "name": "Alex H", "home_state": "WA", "lucky_number": 1, "birthday": { "month": 12, "day": 12, "year": 1985 } },
+  { "name": "Dennis D", "home_state": "MA", "lucky_number": 5, "birthday": { "month": 6, "day": 1, "year": 1987 } }
+]
+

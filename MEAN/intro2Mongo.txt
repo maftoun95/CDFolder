@@ -1,0 +1,60 @@
+sudo mongod
+mongo
+
+use my_first_db
+db.createcollection('students')
+
+mongoimport --jsonArray --db my_first_db ollection students --file populateStudents.json
+ALTERNATIVELY------ db.students.insert({ "name": "Matt P", "home_state": "IL", "lucky_number": 42, "birthday": { "month": 3, "day": 27, "year": 1992 } })......... a bunch of times
+
+-------Now we have a populated collection to play with. LETS RETREIVE SOME DATA!!----------
+
+//show all students from WA or CA 
+db.students.find({$or: [{home_state:"WA"}, {home_state:"CA"}]}).pretty()
+
+//show all students w/ a lucky number greater than 3 
+db.students.find({lucky_number: {$gt:3}}).pretty()
+
+//show all students w/ a lucky number less than/= 10
+db.students.find({lucky_number: {$lte:10}}).pretty()
+
+find students w/ a lucky number between 1 and 9 inclusively
+db.students.find({$and: [{lucky_number: {$gte:1}},{lucky_number:{$lte:9}}]}).pretty()
+
+//give all students an interests array
+db.students.update({lucky_number: {$gte:1}},{$set:{interests: ['coding', 'brunch', 'MongoDB']}}, {multi:true})
+
+//add a unique interest to each document
+db.students.update({name: "Matt P"},{$addToSet: {interests: 'sleeping in'}}), 
+db.students.update({name: "Max R"},{$addToSet: {interests: 'R&B'}}), 
+db.students.update({name: "Alex H"},{$addToSet: {interests: 'bulldogs'}}), 
+db.students.update({name: "Saman M"},{$addToSet: {interests: 'street fighter'}}), 
+db.students.update({name: "Dennis D"},{$addToSet: {interests: 'sailing'}})
+
+//add and the remove the interest taxes from one document
+db.students.update({name: "Saman M"}, {$push: {interests: "taxes"}})
+db.students.update({name: "Saman M"}, {$pop: {interests: 1}})
+
+//remove all student from WA/CA
+db.students.remove({$or: [{home_state:"WA"}, {home_state:"CA"}]})
+db.students.remove(ObjectId("58c4b10858598dc2ab1ed660"))
+
+//Remove 1 student whose lucky number is greater than 5 
+db.students.remove({lucky_number: {$gt: 5}}, 1)
+
+//add a number_of_belts field to each document, set to 0
+db.students.update({lucky_number: {$gte:1}},{$set: {number_of_belts: 0}}, {multi:true})
+
+//increment WA students belts by 1
+db.students.update({home_state: "WA"}, {$inc: {number_of_belts: 1}}, {multi: 1})
+
+//rename number_of_belts -----> belts_earned
+db.students.update({lucky_number: {$gte:1}}, {$rename: {number_of_belts: "belts_earned"}}, {multi: 1})
+db.work.update({lucky_number: {$gte:1}}, {$rename: {number_of_belts: "belts_earned"}}, {multi: 1})
+
+//remove the lucky_number field from each document
+db.students.update({lucky_number: {$gte:1}},{$unset: {lucky_number: ""}}, {multi:true})
+
+//add an updated_on field, timestamp it
+db.students.update({}, {$currentDate:{updated_on: { $type: "timestamp" }}},{multi:true})
+db.work.update({}, {$currentDate:{updated_on: { $type: "timestamp" }}},{multi:true})

@@ -1,0 +1,13 @@
+body {
+    padding: 50px;
+    color: deepskyblue;
+}
+
+h3 {
+    color: darkslateblue;
+}
+
+.col-md-offset-4 {
+    border: 2px solid darkred;
+    border-radius: 10px;
+}

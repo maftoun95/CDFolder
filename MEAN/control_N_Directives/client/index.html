@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myMod">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='https://code.jquery.com/jquery-3.1.1.min.js' integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=' crossorigin=
+    ></script>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+
+    <script src='angular/angular.js'></script>
+    <link rel="stylesheet" href="main.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row" ng-controller="formsController" ng-init='foodArray = ["Teriyaki","Curry","Chicken Alfredo"]'>
+            <form class="well col-md-7">
+                <div class="formgroup">
+                    <label for="">Favorite food:</label>
+                    <input type="text" ng-model="food" class="form-control">
+                    <br><span ng-bind="food"></span>
+                </div> <br>
+                <input type="submit" ng-click="addIt()" value="~Add Food~" class="btn btn-primary">
+            </form>
+            <form class="well col-md-4" ng-hide="checked">
+                <div class="formgroup">
+                    <label for="">Search: </label>
+                    <input type="text" ng-model="searcher" class="form-control">
+                </div>
+                <div class="foodArray">
+                    <ul>
+                        <li ng-repeat="food in foodArray | filter:searcher as results">
+                            {{food}}
+                        </li>
+                        <li class="animate-repeat" ng-if="results.length === 0">
+                            <strong>No results found...</strong>
+                        </li>
+                    </ul>
+                </div>
+                
+            </form>
+            <div class="col-md-4">
+                Show: <input type="checkbox" ng-model="POOP" aria-label="Toggle ngShow"><br />
+                <div class="check-element animate-show-hide" ng-show="POOP">
+                  HELLLLLOOOOOOOOOOOOOO
+                </div>
+            </div>
+            <div class="col-md-offset-4 col-md-4">
+                Hide: <input type="checkbox" ng-model="checked" aria-label="Toggle ngHide"><br />
+            </div>
+        </div>
+    </div>
+</body>
+</html>
