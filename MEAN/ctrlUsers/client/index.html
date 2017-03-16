@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ctrlMod">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='https://code.jquery.com/jquery-3.1.1.min.js' integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=' crossorigin=
+    ></script>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="angular/angular.js"></script>
+    <script src="script.js"></script>
+</head>
+<body ng-controller="userController">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <form class="well">
+                    <div class="form-group">
+                        <label for="">First Name:</label>
+                        <input type="text" ng-model="newser.fname" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Last name:</label>
+                        <input type="text" ng-model="newser.lname" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Favorite Language:</label>
+                        <input type="text" ng-model="newser.lang" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="date" ng-model="newser.date" id="">
+                    </div>
+                    <input type="submit" value="~Add User~" class="btn btn-primary" ng-click="add()">
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <table class="table table-hover">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Favorite Language</th>
+                        <th>Actions</th>
+                    </tr>
+                    <tr ng-repeat="hommie in userArr track by $index">
+                        <td>{{hommie.fname}}</td>
+                        <td>{{hommie.lname}}</td>
+                        <td>{{hommie.lang}}</td>
+                        <td> <a class="btn btn-danger" ng-click="delete($index)">DELETE</a> </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
